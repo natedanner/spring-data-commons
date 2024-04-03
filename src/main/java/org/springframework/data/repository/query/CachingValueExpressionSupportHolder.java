@@ -18,36 +18,35 @@ package org.springframework.data.repository.query;
 import org.springframework.data.expression.ValueExpression;
 import org.springframework.data.expression.ValueExpressionParser;
 import org.springframework.expression.ParseException;
+import org.springframework.util.ConcurrentLruCache;
 
 /**
+ * Caching variant of {@link ValueExpressionSupportHolder}.
+ *
  * @author Mark Paluch
  */
-public class ValueExpressionSupportHolder implements ValueExpressionParser {
+public class CachingValueExpressionSupportHolder extends ValueExpressionSupportHolder {
 
-	private final QueryMethodValueEvaluationContextProviderFactory providerFactory;
-	private final ValueExpressionParser valueExpressionParser;
+	private final ConcurrentLruCache<String, ValueExpression> expressionCache;
 
-	ValueExpressionSupportHolder(ValueExpressionSupportHolder original) {
-		this.providerFactory = original.providerFactory;
-		this.valueExpressionParser = original.valueExpressionParser;
+	public CachingValueExpressionSupportHolder(ValueExpressionSupportHolder supportHolder) {
+		super(supportHolder);
+		this.expressionCache = new ConcurrentLruCache<>(256, supportHolder.getValueExpressionParser()::parse);
 	}
 
-	public ValueExpressionSupportHolder(QueryMethodValueEvaluationContextProviderFactory providerFactory,
+	public CachingValueExpressionSupportHolder(QueryMethodValueEvaluationContextProviderFactory providerFactory,
 			ValueExpressionParser valueExpressionParser) {
-		this.providerFactory = providerFactory;
-		this.valueExpressionParser = valueExpressionParser;
+		super(providerFactory, valueExpressionParser);
+		this.expressionCache = new ConcurrentLruCache<>(256, valueExpressionParser::parse);
 	}
 
-	public QueryMethodValueEvaluationContextProvider createValueContextProvider(Parameters<?, ?> parameters) {
-		return providerFactory.create(parameters);
-	}
-
+	@Override
 	public ValueExpressionParser getValueExpressionParser() {
-		return valueExpressionParser;
+		return this;
 	}
 
 	@Override
 	public ValueExpression parse(String expressionString) throws ParseException {
-		return valueExpressionParser.parse(expressionString);
+		return expressionCache.get(expressionString);
 	}
 }
