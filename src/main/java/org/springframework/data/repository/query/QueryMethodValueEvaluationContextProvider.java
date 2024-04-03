@@ -35,7 +35,6 @@ public interface QueryMethodValueEvaluationContextProvider {
 	 * @return an {@link ValueEvaluationContext} built using the given parameter values and *
 	 *         {@link ExpressionDependencies}.
 	 */
-	<T extends Parameters<?, ?>> ValueEvaluationContext getEvaluationContext(Object[] parameterValues,
-			ExpressionDependencies dependencies);
+	ValueEvaluationContext getEvaluationContext(Object[] parameterValues, ExpressionDependencies dependencies);
 
 }
