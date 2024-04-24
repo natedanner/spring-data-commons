@@ -64,9 +64,9 @@ public abstract class NullableWrapperConverters {
 	private static final boolean VAVR_PRESENT = ClassUtils.isPresent("io.vavr.control.Option",
 			NullableWrapperConverters.class.getClassLoader());
 
-	private static final Set<WrapperType> WRAPPER_TYPES = new HashSet<WrapperType>();
-	private static final Set<WrapperType> UNWRAPPER_TYPES = new HashSet<WrapperType>();
-	private static final Set<Converter<Object, Object>> UNWRAPPERS = new HashSet<Converter<Object, Object>>();
+	private static final Set<WrapperType> WRAPPER_TYPES = new HashSet<>();
+	private static final Set<WrapperType> UNWRAPPER_TYPES = new HashSet<>();
+	private static final Set<Converter<Object, Object>> UNWRAPPERS = new HashSet<>();
 	private static final Map<Class<?>, Boolean> supportsCache = new ConcurrentReferenceHashMap<>();
 
 	static {
@@ -220,7 +220,7 @@ public abstract class NullableWrapperConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	private static abstract class AbstractWrapperTypeConverter implements GenericConverter {
+	private abstract static class AbstractWrapperTypeConverter implements GenericConverter {
 
 		private final Object nullValue;
 		private final Iterable<Class<?>> wrapperTypes;
@@ -279,7 +279,7 @@ public abstract class NullableWrapperConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	private static class NullableWrapperToJdk8OptionalConverter extends AbstractWrapperTypeConverter {
+	private static final class NullableWrapperToJdk8OptionalConverter extends AbstractWrapperTypeConverter {
 
 		public static final NullableWrapperToJdk8OptionalConverter INSTANCE = new NullableWrapperToJdk8OptionalConverter();
 
@@ -302,7 +302,7 @@ public abstract class NullableWrapperConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	private static class NullableWrapperToGuavaOptionalConverter extends AbstractWrapperTypeConverter {
+	private static final class NullableWrapperToGuavaOptionalConverter extends AbstractWrapperTypeConverter {
 
 		public static final NullableWrapperToGuavaOptionalConverter INSTANCE = new NullableWrapperToGuavaOptionalConverter();
 
@@ -326,7 +326,7 @@ public abstract class NullableWrapperConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	private static class NullableWrapperToScalaOptionConverter extends AbstractWrapperTypeConverter {
+	private static final class NullableWrapperToScalaOptionConverter extends AbstractWrapperTypeConverter {
 
 		public static final NullableWrapperToScalaOptionConverter INSTANCE = new NullableWrapperToScalaOptionConverter();
 
@@ -349,7 +349,7 @@ public abstract class NullableWrapperConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	private static class NullableWrapperToVavrOptionConverter extends AbstractWrapperTypeConverter {
+	private static final class NullableWrapperToVavrOptionConverter extends AbstractWrapperTypeConverter {
 
 		public static final NullableWrapperToVavrOptionConverter INSTANCE = new NullableWrapperToVavrOptionConverter();
 
@@ -410,7 +410,7 @@ public abstract class NullableWrapperConverters {
 
 		INSTANCE;
 
-		private final Function0<Object> alternative = new AbstractFunction0<Object>() {
+		private final Function0<Object> alternative = new AbstractFunction0<>() {
 
 			@Nullable
 			@Override
@@ -495,7 +495,7 @@ public abstract class NullableWrapperConverters {
 		}
 
 		enum Cardinality {
-			NONE, SINGLE, MULTI;
+			NONE, SINGLE, MULTI
 		}
 
 		private final Class<?> type;

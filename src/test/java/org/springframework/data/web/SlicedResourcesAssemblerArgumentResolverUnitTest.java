@@ -132,9 +132,8 @@ class SlicedResourcesAssemblerArgumentResolverUnitTest {
 
 	private static void assertMethodParameterAwareSlicedResourcesAssemblerFor(Object result, MethodParameter parameter) {
 
-		assertThat(result).isInstanceOfSatisfying(SlicedResourcesAssembler.class, it -> {
-			assertThat(ReflectionTestUtils.getField(it, "parameter")).isEqualTo(parameter);
-		});
+		assertThat(result).isInstanceOfSatisfying(SlicedResourcesAssembler.class, it ->
+			assertThat(ReflectionTestUtils.getField(it, "parameter")).isEqualTo(parameter));
 	}
 
 	@RequestMapping("/")

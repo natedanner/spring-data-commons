@@ -172,7 +172,7 @@ public class Part {
 	 * @author Thomas Darimont
 	 * @author Michael Cramer
 	 */
-	public static enum Type {
+	public enum Type {
 
 		BETWEEN(2, "IsBetween", "Between"), IS_NOT_NULL(0, "IsNotNull", "NotNull"), IS_NULL(0, "IsNull", "Null"), LESS_THAN(
 				"IsLessThan", "LessThan"), LESS_THAN_EQUAL("IsLessThanEqual", "LessThanEqual"), GREATER_THAN("IsGreaterThan",

@@ -351,7 +351,7 @@ class RepositoryConfigurationDelegateUnitTests {
 		return repositories.get(0).getBeanDefinition().getResolvableType();
 	}
 
-	static abstract class IdConstrainingRepositoryFactoryBean<T extends Repository<S, UUID>, S>
+	abstract static class IdConstrainingRepositoryFactoryBean<T extends Repository<S, UUID>, S>
 			extends RepositoryFactoryBeanSupport<T, S, UUID> {
 
 		protected IdConstrainingRepositoryFactoryBean(Class<? extends T> repositoryInterface) {
@@ -359,7 +359,7 @@ class RepositoryConfigurationDelegateUnitTests {
 		}
 	}
 
-	static abstract class DomainTypeConstrainingRepositoryFactoryBean<T extends Repository<Person, ID>, ID>
+	abstract static class DomainTypeConstrainingRepositoryFactoryBean<T extends Repository<Person, ID>, ID>
 			extends RepositoryFactoryBeanSupport<T, Person, ID> {
 
 		protected DomainTypeConstrainingRepositoryFactoryBean(Class<? extends T> repositoryInterface) {
@@ -367,7 +367,7 @@ class RepositoryConfigurationDelegateUnitTests {
 		}
 	}
 
-	static abstract class AdditionalGenericsRepositoryFactoryBean<T extends Repository<S, ID>, S, ID, R>
+	abstract static class AdditionalGenericsRepositoryFactoryBean<T extends Repository<S, ID>, S, ID, R>
 			extends RepositoryFactoryBeanSupport<T, S, ID> {
 
 		protected AdditionalGenericsRepositoryFactoryBean(Class<? extends T> repositoryInterface) {

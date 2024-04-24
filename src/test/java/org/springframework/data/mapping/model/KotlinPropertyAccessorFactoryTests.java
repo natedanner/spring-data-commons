@@ -41,8 +41,8 @@ import org.springframework.data.mapping.context.SamplePersistentProperty;
  */
 public class KotlinPropertyAccessorFactoryTests {
 
-	private EntityInstantiators instantiators = new EntityInstantiators();
-	private SampleMappingContext mappingContext = new SampleMappingContext();
+	private final EntityInstantiators instantiators = new EntityInstantiators();
+	private final SampleMappingContext mappingContext = new SampleMappingContext();
 
 	@MethodSource("factories")
 	@ParameterizedTest // GH-1947
@@ -193,7 +193,7 @@ public class KotlinPropertyAccessorFactoryTests {
 		MyGenericValue<?> newInner = genericClass.getConstructors().iterator().next().call("new-value");
 		MyGenericValue<?> newOuter = genericClass.getConstructors().iterator().next().call(newInner);
 
-		Object instance = createInstance(entity, parameter -> parameter.getName().equals("recursive") ? outer : "aaa");
+		Object instance = createInstance(entity, parameter -> "recursive".equals(parameter.getName()) ? outer : "aaa");
 
 		var propertyAccessor = factory.getPropertyAccessor(entity, instance);
 		var string = entity.getRequiredPersistentProperty("string");

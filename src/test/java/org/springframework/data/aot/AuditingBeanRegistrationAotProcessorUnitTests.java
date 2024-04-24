@@ -52,9 +52,8 @@ class AuditingBeanRegistrationAotProcessorUnitTests {
 
 		BeanRegistrationAotContribution beanRegistrationAotContribution = new AuditingBeanRegistrationAotProcessor()
 				.processAheadOfTime(RegisteredBean.of(beanFactory, beanName));
-		assertThatAotContribution(beanRegistrationAotContribution).codeContributionSatisfies(code -> {
-			code.contributesJdkProxyFor(AuditorAware.class);
-		});
+		assertThatAotContribution(beanRegistrationAotContribution).codeContributionSatisfies(code ->
+			code.contributesJdkProxyFor(AuditorAware.class));
 	}
 
 	@Test // GH-2593
@@ -66,9 +65,8 @@ class AuditingBeanRegistrationAotProcessorUnitTests {
 
 		BeanRegistrationAotContribution beanRegistrationAotContribution = new AuditingBeanRegistrationAotProcessor()
 				.processAheadOfTime(RegisteredBean.of(beanFactory, beanName));
-		assertThatAotContribution(beanRegistrationAotContribution).codeContributionSatisfies(code -> {
-			code.contributesJdkProxyFor(ReactiveAuditorAware.class);
-		});
+		assertThatAotContribution(beanRegistrationAotContribution).codeContributionSatisfies(code ->
+			code.contributesJdkProxyFor(ReactiveAuditorAware.class));
 	}
 
 	@Test // GH-2593

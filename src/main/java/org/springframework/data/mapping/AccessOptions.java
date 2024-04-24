@@ -186,7 +186,7 @@ public class AccessOptions {
 			Assert.isTrue(type.isAssignableFrom(property.getType()), () -> String
 					.format("Cannot register a property handler for %s on a property of type %s", type, property.getType()));
 
-			Function<Object, T> caster = (Function<Object, T>) it -> type.cast(it);
+			Function<Object, T> caster = (Function<Object, T>) type::cast;
 
 			return registerHandler(property, caster.andThen(handler));
 		}
@@ -260,7 +260,7 @@ public class AccessOptions {
 			/**
 			 * Silently skip the attempt to set the value.
 			 */
-			SKIP;
+			SKIP
 		}
 
 		/**
@@ -279,7 +279,7 @@ public class AccessOptions {
 			 * Propagate the setting of values when encountering a collection or map value and set it on all collection or map
 			 * members.
 			 */
-			PROPAGATE;
+			PROPAGATE
 		}
 
 		private static final SetOptions DEFAULT = new SetOptions();
@@ -356,11 +356,7 @@ public class AccessOptions {
 				return false;
 			}
 
-			if (property.isMap() && mapPropagation.equals(Propagation.SKIP)) {
-				return false;
-			}
-
-			return true;
+			return !(property.isMap() && mapPropagation.equals(Propagation.SKIP));
 		}
 	}
 }

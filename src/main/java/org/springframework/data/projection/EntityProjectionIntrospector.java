@@ -41,7 +41,7 @@ import org.springframework.util.Assert;
  * @author Oliver Drotbohm
  * @since 2.7
  */
-public class EntityProjectionIntrospector {
+public final class EntityProjectionIntrospector {
 
 	private final ProjectionFactory projectionFactory;
 	private final ProjectionPredicate projectionPredicate;

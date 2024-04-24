@@ -236,7 +236,10 @@ class CustomCollectionsUnitTests {
 
 	static class CustomCollectionTester {
 
-		private final Collection<Class<?>> expectedCollections, expectedMaps, collectionImplementations, mapImplementations;
+		private final Collection<Class<?>> expectedCollections;
+		private final Collection<Class<?>> expectedMaps;
+		private final Collection<Class<?>> collectionImplementations;
+		private final Collection<Class<?>> mapImplementations;
 
 		public CustomCollectionTester() {
 

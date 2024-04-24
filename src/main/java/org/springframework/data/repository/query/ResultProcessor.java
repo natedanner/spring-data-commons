@@ -196,7 +196,7 @@ public class ResultProcessor {
 		}
 	}
 
-	private static class ChainingConverter implements Converter<Object, Object> {
+	private static final class ChainingConverter implements Converter<Object, Object> {
 
 		private final Class<?> targetType;
 		private final Converter<Object, Object> delegate;
@@ -247,7 +247,7 @@ public class ResultProcessor {
 	 * @author Oliver Gierke
 	 * @since 1.12
 	 */
-	private static enum NoOpConverter implements Converter<Object, Object> {
+	private enum NoOpConverter implements Converter<Object, Object> {
 
 		INSTANCE;
 

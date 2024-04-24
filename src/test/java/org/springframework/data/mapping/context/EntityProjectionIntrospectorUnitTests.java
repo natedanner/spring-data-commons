@@ -151,9 +151,8 @@ class EntityProjectionIntrospectorUnitTests {
 		assertThat(descriptor.isProjection()).isTrue();
 
 		List<PropertyPath> paths = new ArrayList<>();
-		descriptor.forEachRecursive(it -> {
-			paths.add(it.getPropertyPath());
-		});
+		descriptor.forEachRecursive(it ->
+			paths.add(it.getPropertyPath()));
 
 		assertThat(paths).hasSize(3).extracting(PropertyPath::toDotPath).containsOnly("domains", "id", "value");
 	}

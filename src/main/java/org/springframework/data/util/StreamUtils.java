@@ -68,7 +68,7 @@ public interface StreamUtils {
 
 		Assert.notNull(iterator, "Iterator must not be null");
 
-		return createStreamFromIterator((Iterator<T>) iterator).onClose(() -> iterator.close());
+		return createStreamFromIterator((Iterator<T>) iterator).onClose(iterator::close);
 	}
 
 	/**
@@ -141,8 +141,8 @@ public interface StreamUtils {
 			@SuppressWarnings("null")
 			public boolean tryAdvance(Consumer<? super T> action) {
 
-				Sink<L> leftSink = new Sink<L>();
-				Sink<R> rightSink = new Sink<R>();
+				Sink<L> leftSink = new Sink<>();
+				Sink<R> rightSink = new Sink<>();
 
 				boolean leftAdvance = lefts.tryAdvance(leftSink);
 

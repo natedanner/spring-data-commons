@@ -87,7 +87,8 @@ class DefaultRepositoryConfigurationUnitTests {
 	}
 
 	private static final class SimplerRepositoryConfigurationExtension extends RepositoryConfigurationExtensionSupport {
-		private final String repositoryFactoryBeanClassName, modulePrefix;
+		private final String repositoryFactoryBeanClassName;
+		private final String modulePrefix;
 
 		public SimplerRepositoryConfigurationExtension(String repositoryFactoryBeanClassName, String modulePrefix) {
 			this.repositoryFactoryBeanClassName = repositoryFactoryBeanClassName;

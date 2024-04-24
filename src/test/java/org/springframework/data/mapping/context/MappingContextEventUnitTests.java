@@ -36,7 +36,9 @@ class MappingContextEventUnitTests<E extends PersistentEntity<?, P>, P extends P
 	E entity;
 
 	@Mock
-	MappingContext<?, ?> mappingContext, otherMappingContext;
+	MappingContext<?, ?> mappingContext;
+	@Mock
+	MappingContext<?, ?> otherMappingContext;
 
 	@Test
 	void returnsPersistentEntityHandedToTheEvent() {

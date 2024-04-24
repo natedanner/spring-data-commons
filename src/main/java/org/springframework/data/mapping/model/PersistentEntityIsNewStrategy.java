@@ -32,7 +32,7 @@ import org.springframework.util.ClassUtils;
  * @soundtrack Scary Pockets - Crash Into Me (Dave Matthews Band Cover feat. Julia Nunes) -
  *             https://www.youtube.com/watch?v=syGlBNVGEqU
  */
-class PersistentEntityIsNewStrategy implements IsNewStrategy {
+final class PersistentEntityIsNewStrategy implements IsNewStrategy {
 
 	private final Function<Object, Object> valueLookup;
 	private final @Nullable Class<?> valueType;

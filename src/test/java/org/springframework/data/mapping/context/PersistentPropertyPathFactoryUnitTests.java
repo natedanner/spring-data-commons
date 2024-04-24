@@ -77,8 +77,8 @@ class PersistentPropertyPathFactoryUnitTests {
 		assertThatExceptionOfType(InvalidPersistentPropertyPath.class)//
 				.isThrownBy(() -> factory.from(PersonSample.class, "persons.firstname"))//
 				.matches(e -> StringUtils.hasText(e.getMessage()))//
-				.matches(e -> e.getResolvedPath().equals("persons"))//
-				.matches(e -> e.getUnresolvableSegment().equals("firstname"))//
+				.matches(e -> "persons".equals(e.getResolvedPath()))//
+				.matches(e -> "firstname".equals(e.getUnresolvableSegment()))//
 				.matches(e -> factory.from(PersonSample.class, e.getResolvedPath()) != null);
 	}
 
@@ -105,7 +105,7 @@ class PersistentPropertyPathFactoryUnitTests {
 		PersistentPropertyPaths<?, SamplePersistentProperty> paths = factory.from(Sample.class,
 				property -> property.findAnnotation(Inject.class) != null);
 
-		assertThat(paths).hasSize(1).anySatisfy(it -> it.toDotPath().equals("inner.annotatedField"));
+		assertThat(paths).hasSize(1).anySatisfy(it -> "inner.annotatedField".equals(it.toDotPath()));
 	}
 
 	@Test // DATACMNS-1275
@@ -115,8 +115,8 @@ class PersistentPropertyPathFactoryUnitTests {
 				property -> property.findAnnotation(Inject.class) != null);
 
 		assertThat(paths).hasSize(2);//
-		assertThat(paths).element(0).satisfies(it -> it.toDotPath().equals("first.inner.annotatedField"));
-		assertThat(paths).element(1).satisfies(it -> it.toDotPath().equals("second.inner.annotatedField"));
+		assertThat(paths).element(0).satisfies(it -> "first.inner.annotatedField".equals(it.toDotPath()));
+		assertThat(paths).element(1).satisfies(it -> "second.inner.annotatedField".equals(it.toDotPath()));
 	}
 
 	@Test // DATACMNS-1275

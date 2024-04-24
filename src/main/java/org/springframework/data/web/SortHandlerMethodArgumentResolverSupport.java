@@ -357,7 +357,7 @@ public abstract class SortHandlerMethodArgumentResolverSupport {
 	 * @author Mark Paluch
 	 * @since 2.3
 	 */
-	static class SortOrderParser {
+	static final class SortOrderParser {
 
 		private static final String IGNORECASE = "ignorecase";
 

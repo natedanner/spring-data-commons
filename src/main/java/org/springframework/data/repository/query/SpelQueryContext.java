@@ -134,7 +134,7 @@ public class SpelQueryContext {
 	 * @author Oliver Gierke
 	 * @since 2.1
 	 */
-	public static class EvaluatingSpelQueryContext extends SpelQueryContext {
+	public static final class EvaluatingSpelQueryContext extends SpelQueryContext {
 
 		private final QueryMethodEvaluationContextProvider evaluationContextProvider;
 

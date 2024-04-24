@@ -118,9 +118,8 @@ class PagedResourcesAssemblerArgumentResolverUnitTests {
 
 	private static void assertMethodParameterAwarePagedResourcesAssemblerFor(Object result, MethodParameter parameter) {
 
-		assertThat(result).isInstanceOfSatisfying(PagedResourcesAssembler.class, it -> {
-			assertThat(ReflectionTestUtils.getField(it, "parameter")).isEqualTo(parameter);
-		});
+		assertThat(result).isInstanceOfSatisfying(PagedResourcesAssembler.class, it ->
+			assertThat(ReflectionTestUtils.getField(it, "parameter")).isEqualTo(parameter));
 	}
 
 	private void assertRejectsAmbiguity(String methodName) throws Exception {

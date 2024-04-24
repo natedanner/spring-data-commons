@@ -39,7 +39,10 @@ import org.springframework.data.mapping.PersistentPropertyPath;
 @ExtendWith(MockitoExtension.class)
 class DefaultPersistentPropertyPathUnitTests<P extends PersistentProperty<P>> {
 
-	@Mock P first, second;
+	@Mock
+	P first;
+	@Mock
+	P second;
 
 	@Mock Converter<P, String> converter;
 
@@ -134,16 +137,16 @@ class DefaultPersistentPropertyPathUnitTests<P extends PersistentProperty<P>> {
 	@Test // DATACMNS-1466
 	void throwsExceptionForLeafPropertyOnEmptyPath() {
 
-		PersistentPropertyPath<P> path = new DefaultPersistentPropertyPath<P>(Collections.emptyList());
+		PersistentPropertyPath<P> path = new DefaultPersistentPropertyPath<>(Collections.emptyList());
 
-		assertThatIllegalStateException().isThrownBy(() -> path.getLeafProperty());
+		assertThatIllegalStateException().isThrownBy(path::getLeafProperty);
 	}
 
 	@Test // DATACMNS-1466
 	void throwsExceptionForBasePropertyOnEmptyPath() {
 
-		PersistentPropertyPath<P> path = new DefaultPersistentPropertyPath<P>(Collections.emptyList());
+		PersistentPropertyPath<P> path = new DefaultPersistentPropertyPath<>(Collections.emptyList());
 
-		assertThatIllegalStateException().isThrownBy(() -> path.getBaseProperty());
+		assertThatIllegalStateException().isThrownBy(path::getBaseProperty);
 	}
 }

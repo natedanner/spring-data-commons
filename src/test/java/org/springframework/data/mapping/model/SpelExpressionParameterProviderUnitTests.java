@@ -106,7 +106,7 @@ class SpelExpressionParameterProviderUnitTests {
 	@Test
 	void returnsMassagedObjectOnOverride() {
 
-		provider = new SpELExpressionParameterValueProvider<SamplePersistentProperty>(evaluator, conversionService,
+		provider = new SpELExpressionParameterValueProvider<>(evaluator, conversionService,
 				delegate) {
 
 			@Override

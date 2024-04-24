@@ -208,7 +208,7 @@ class ReturnedTypeUnitTests {
 
 		SampleInterface findOneInterface();
 
-		static enum MyEnum {
+		enum MyEnum {
 			VALUE
 		}
 	}
@@ -216,7 +216,8 @@ class ReturnedTypeUnitTests {
 	static interface SampleInterface {}
 
 	static class Sample implements SampleInterface {
-		String firstname, lastname;
+		String firstname;
+		String lastname;
 
 		Sample(String firstname, String lastname) {
 			this.firstname = firstname;

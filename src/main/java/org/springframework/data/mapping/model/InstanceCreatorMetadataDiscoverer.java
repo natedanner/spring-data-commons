@@ -100,7 +100,7 @@ class InstanceCreatorMetadataDiscoverer {
 				}
 
 				for (Method declaredMethod : entity.getType().getDeclaredMethods()) {
-					if (declaredMethod.getName().equals("box-impl") && declaredMethod.isSynthetic()
+					if ("box-impl".equals(declaredMethod.getName()) && declaredMethod.isSynthetic()
 							&& declaredMethod.getParameterCount() == 1) {
 
 						Annotation[][] parameterAnnotations = declaredMethod.getParameterAnnotations();

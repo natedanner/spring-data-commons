@@ -325,7 +325,7 @@ class DefaultEntityCallbacksUnitTests {
 	@Configuration
 	static class SomeConfiguration {
 
-		boolean invoked = false;
+		boolean invoked;
 
 		@Bean
 		BeforeSaveCallback<Object> someGenericCallback() {

@@ -58,7 +58,7 @@ class DomainClassConverterIntegrationTests {
 		var beanFactory = new DefaultListableBeanFactory() {
 			@Override
 			protected BeanWrapper instantiateBean(String beanName, RootBeanDefinition mbd) {
-				return beanName.equals("repoFactory") ? new BeanWrapperImpl(factory) : super.instantiateBean(beanName, mbd);
+				return "repoFactory".equals(beanName) ? new BeanWrapperImpl(factory) : super.instantiateBean(beanName, mbd);
 			}
 		};
 

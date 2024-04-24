@@ -215,14 +215,14 @@ class QuerydslPredicateArgumentResolverUnitTests {
 	@SuppressWarnings("rawtypes")
 	void detectsDomainTypesCorrectly() {
 
-		TypeInformation USER_TYPE = TypeInformation.of(User.class);
-		TypeInformation MODELA_AND_VIEW_TYPE = TypeInformation.of(ModelAndView.class);
+		TypeInformation userType = TypeInformation.of(User.class);
+		TypeInformation modelaAndViewType = TypeInformation.of(ModelAndView.class);
 
-		assertThat(extractTypeInfo(getMethodParameterFor("forEntity"), MergedAnnotation.missing())).isEqualTo(USER_TYPE);
+		assertThat(extractTypeInfo(getMethodParameterFor("forEntity"), MergedAnnotation.missing())).isEqualTo(userType);
 		assertThat(extractTypeInfo(getMethodParameterFor("forResourceOfUser"), MergedAnnotation.missing()))
-				.isEqualTo(USER_TYPE);
+				.isEqualTo(userType);
 		assertThat(extractTypeInfo(getMethodParameterFor("forModelAndView"), MergedAnnotation.missing()))
-				.isEqualTo(MODELA_AND_VIEW_TYPE);
+				.isEqualTo(modelaAndViewType);
 	}
 
 	@Test // DATACMNS-1593

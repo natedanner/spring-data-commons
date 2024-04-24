@@ -457,8 +457,9 @@ public final class Range<T> {
 				return true;
 			}
 
-			if (inclusive != bound.inclusive)
+			if (inclusive != bound.inclusive) {
 				return false;
+			}
 
 			return ObjectUtils.nullSafeEquals(value, bound.value);
 		}

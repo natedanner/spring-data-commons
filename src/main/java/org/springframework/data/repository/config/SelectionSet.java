@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * @author Johannes Englmeier
  * @since 2.0
  */
-class SelectionSet<T> {
+final class SelectionSet<T> {
 
 	private final Collection<T> collection;
 	private final Function<Collection<T>, Optional<T>> fallback;
@@ -49,7 +49,7 @@ class SelectionSet<T> {
 	}
 
 	public static <T> SelectionSet<T> of(Collection<T> collection, Function<Collection<T>, Optional<T>> fallback) {
-		return new SelectionSet<T>(collection, fallback);
+		return new SelectionSet<>(collection, fallback);
 	}
 
 	/**

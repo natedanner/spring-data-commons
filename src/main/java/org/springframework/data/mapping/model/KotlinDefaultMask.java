@@ -30,7 +30,7 @@ import java.util.function.Predicate;
  * @author Mark Paluch
  * @since 2.1
  */
-public class KotlinDefaultMask {
+public final class KotlinDefaultMask {
 
 	private final int[] defaulting;
 

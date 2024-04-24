@@ -57,7 +57,7 @@ public abstract class RepositoryConfigurationExtensionSupport implements Reposit
 	private static final String CLASS_LOADING_ERROR = "%s - Could not load type %s using class loader %s";
 	private static final String MULTI_STORE_DROPPED = "Spring Data %s - Could not safely identify store assignment for repository candidate %s; If you want this repository to be a %s repository,";
 
-	private boolean noMultiStoreSupport = false;
+	private boolean noMultiStoreSupport;
 
 	@Override
 	public String getModuleName() {

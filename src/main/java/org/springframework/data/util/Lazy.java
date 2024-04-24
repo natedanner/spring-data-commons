@@ -37,7 +37,7 @@ import org.springframework.util.ObjectUtils;
  * @author Greg Turnquist
  * @since 2.0
  */
-public class Lazy<T> implements Supplier<T> {
+public final class Lazy<T> implements Supplier<T> {
 
 	private static final Lazy<?> EMPTY = new Lazy<>(() -> null, null, true);
 	static final String UNRESOLVED = "[Unresolved]";

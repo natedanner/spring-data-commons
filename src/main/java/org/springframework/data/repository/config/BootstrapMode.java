@@ -41,5 +41,5 @@ public enum BootstrapMode {
 	 * Repository bean definitions are considered lazy, lazily inject and only initialized on first use, i.e. the
 	 * application might have fully started without the repositories initialized.
 	 */
-	LAZY;
+	LAZY
 }

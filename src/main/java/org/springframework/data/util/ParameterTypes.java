@@ -58,7 +58,7 @@ public class ParameterTypes {
 	private ParameterTypes(List<TypeDescriptor> types) {
 
 		this.types = types;
-		this.alternatives = Lazy.of(() -> getAlternatives());
+		this.alternatives = Lazy.of(this::getAlternatives);
 	}
 
 	public ParameterTypes(List<TypeDescriptor> types, Lazy<Collection<ParameterTypes>> alternatives) {
@@ -299,7 +299,7 @@ public class ParameterTypes {
 	 *
 	 * @author Oliver Drotbohm
 	 */
-	static class ParentParameterTypes extends ParameterTypes {
+	static final class ParentParameterTypes extends ParameterTypes {
 
 		private final TypeDescriptor tail;
 
@@ -321,9 +321,9 @@ public class ParameterTypes {
 		@Override
 		protected Optional<ParameterTypes> withLastVarArgs() {
 
-			return !tail.isAssignableTo(super.getTail()) //
-					? Optional.empty() //
-					: super.withLastVarArgs();
+			return tail.isAssignableTo(super.getTail()) //
+					? super.withLastVarArgs() //
+					: Optional.empty();
 		}
 
 		@Override

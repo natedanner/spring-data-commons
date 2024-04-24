@@ -37,9 +37,8 @@ class DefaultMethodInvokingMethodInterceptorUnitTests {
 
 		Object proxy = factory.getProxy();
 
-		assertThat(proxy).isInstanceOfSatisfying(Sample.class, it -> {
-			assertThat(it.sample()).isEqualTo("sample");
-		});
+		assertThat(proxy).isInstanceOfSatisfying(Sample.class, it ->
+			assertThat(it.sample()).isEqualTo("sample"));
 	}
 
 	interface Sample {

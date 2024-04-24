@@ -34,7 +34,7 @@ import org.springframework.data.web.ProjectingJackson2HttpMessageConverterUnitTe
 public class ProxyingHandlerMethodArgumentResolverUnitTests {
 
 	ProxyingHandlerMethodArgumentResolver resolver = new ProxyingHandlerMethodArgumentResolver(
-			() -> new DefaultConversionService(), true);
+			DefaultConversionService::new, true);
 
 	@Test // DATACMNS-776
 	void supportAnnotatedInterface() throws Exception {

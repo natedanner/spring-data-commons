@@ -49,11 +49,10 @@ class SelectionSetUnitTests {
 	@Test // DATACMNS-764
 	void throwsCustomExceptionWhenConfigured() {
 
-		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+		assertThatExceptionOfType(NullPointerException.class).isThrownBy(() ->
 			SelectionSet.of(asList("one", "two"), c -> {
 				throw new NullPointerException();
-			}).uniqueResult();
-		});
+			}).uniqueResult());
 	}
 
 	@Test // DATACMNS-764

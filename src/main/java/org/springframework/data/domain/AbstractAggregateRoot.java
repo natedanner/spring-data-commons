@@ -35,7 +35,7 @@ import org.springframework.util.Assert;
  */
 public class AbstractAggregateRoot<A extends AbstractAggregateRoot<A>> {
 
-	private transient final @Transient List<Object> domainEvents = new ArrayList<>();
+	private final transient @Transient List<Object> domainEvents = new ArrayList<>();
 
 	/**
 	 * Registers the given event object for publication on a call to a Spring Data repository's save or delete methods.

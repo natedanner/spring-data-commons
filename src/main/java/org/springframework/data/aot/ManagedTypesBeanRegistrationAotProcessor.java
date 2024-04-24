@@ -80,7 +80,7 @@ public class ManagedTypesBeanRegistrationAotProcessor implements BeanRegistratio
 			ValueHolder indexedArgumentValue = beanDefinition.getConstructorArgumentValues().getIndexedArgumentValue(0, null);
 			Object value = indexedArgumentValue.getValue();
 
-			if (value instanceof Collection<?> values && values.stream().allMatch(it -> it instanceof Class)) {
+			if (value instanceof Collection<?> values && values.stream().allMatch(Class.class::isInstance)) {
 				return ManagedTypes.fromIterable((Collection<Class<?>>) values);
 			}
 		}

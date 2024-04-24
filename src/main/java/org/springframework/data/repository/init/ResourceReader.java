@@ -25,7 +25,7 @@ import org.springframework.lang.Nullable;
 public interface ResourceReader {
 
 	enum Type {
-		XML, JSON;
+		XML, JSON
 	}
 
 	/**

@@ -51,7 +51,7 @@ import org.springframework.util.ConcurrentReferenceHashMap;
  * @author Christoph Strobl
  * @since 2.1
  */
-class KotlinCopyMethod {
+final class KotlinCopyMethod {
 
 	private static final Map<Class<?>, Optional<KotlinCopyMethod>> COPY_METHOD_CACHE = new ConcurrentReferenceHashMap<>();
 
@@ -204,16 +204,14 @@ class KotlinCopyMethod {
 			String methodNameWithHash = methodName.substring(0, methodName.indexOf("$"));
 			isCopyMethod = it -> it.equals(methodNameWithHash);
 		} else {
-			isCopyMethod = it -> it.equals("copy");
+			isCopyMethod = "copy"::equals;
 		}
 
-		return Arrays.stream(type.getDeclaredMethods()).filter(it -> {
-			return isCopyMethod.test(it.getName()) //
+		return Arrays.stream(type.getDeclaredMethods()).filter(it -> isCopyMethod.test(it.getName()) //
 					&& !it.isSynthetic() //
 					&& !Modifier.isStatic(it.getModifiers()) //
 					&& it.getReturnType().equals(type) //
-					&& it.getParameterCount() == constructorArguments.size();
-		}) //
+					&& it.getParameterCount() == constructorArguments.size()) //
 				.filter(it -> {
 
 					KFunction<?> kotlinFunction = ReflectJvmMapping.getKotlinFunction(it);
@@ -267,7 +265,7 @@ class KotlinCopyMethod {
 		boolean usesValueClasses = KotlinReflectionUtils.hasValueClassProperty(type);
 
 		Predicate<String> isCopyMethod = usesValueClasses ? (it -> it.startsWith("copy-") && it.endsWith("$default"))
-				: (it -> it.equals("copy$default"));
+				: ("copy$default"::equals);
 
 		return Arrays.stream(type.getDeclaredMethods()) //
 				.filter(it -> isCopyMethod.test(it.getName()) //

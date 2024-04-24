@@ -74,7 +74,7 @@ public class SliceImpl<T> extends Chunk<T> {
 		String contentType = "UNKNOWN";
 		List<T> content = getContent();
 
-		if (content.size() > 0) {
+		if (!content.isEmpty()) {
 			contentType = content.get(0).getClass().getName();
 		}
 

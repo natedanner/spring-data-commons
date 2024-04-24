@@ -54,7 +54,7 @@ interface EntityCallbackInvoker {
 		}
 
 		// On Java 18, the message is "IllegalArgumentException: argument type mismatch"
-		if (exceptionMessage.equals("argument type mismatch")) {
+		if ("argument type mismatch".equals(exceptionMessage)) {
 			return true;
 		}
 

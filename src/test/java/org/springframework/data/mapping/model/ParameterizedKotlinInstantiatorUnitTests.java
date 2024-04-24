@@ -80,12 +80,9 @@ public class ParameterizedKotlinInstantiatorUnitTests {
 
 		var persistentEntity = context.getPersistentEntity(entityType);
 
-		return IntStream.range(0, propertyCount).mapToObj(i -> {
-
-			return new Object[] { persistentEntity, propertyCount, i, Integer.toString(i), entityInstantiator,
+		return IntStream.range(0, propertyCount).mapToObj(i -> new Object[] { persistentEntity, propertyCount, i, Integer.toString(i), entityInstantiator,
 					String.format("Property %d for %s using %s", i, entityType.getSimpleName(),
-							entityInstantiator.getClass().getSimpleName()) };
-		}).collect(Collectors.toList());
+							entityInstantiator.getClass().getSimpleName()) }).collect(Collectors.toList());
 	}
 
 	@Test // DATACMNS-1402

@@ -31,7 +31,8 @@ import com.querydsl.core.annotations.QueryEntity;
 @QueryEntity
 public class User {
 
-	public String firstname, lastname;
+	public String firstname;
+	public String lastname;
 	public @DateTimeFormat(iso = ISO.DATE) Date dateOfBirth;
 	public Address address;
 	public List<Address> addresses;

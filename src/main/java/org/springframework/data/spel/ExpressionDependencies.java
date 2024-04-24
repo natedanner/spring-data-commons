@@ -41,7 +41,7 @@ import org.springframework.util.ObjectUtils;
  * @author Christoph Strobl
  * @since 2.4
  */
-public class ExpressionDependencies implements Streamable<ExpressionDependencies.ExpressionDependency> {
+public final class ExpressionDependencies implements Streamable<ExpressionDependencies.ExpressionDependency> {
 
 	private static final ExpressionDependencies EMPTY = new ExpressionDependencies(Collections.emptyList());
 
@@ -188,7 +188,7 @@ public class ExpressionDependencies implements Streamable<ExpressionDependencies
 	 * @author Mark Paluch
 	 * @since 2.4
 	 */
-	public static class ExpressionDependency {
+	public static final class ExpressionDependency {
 
 		private final DependencyType type;
 		private final String symbol;
@@ -282,7 +282,7 @@ public class ExpressionDependencies implements Streamable<ExpressionDependencies
 		}
 
 		enum DependencyType {
-			PROPERTY, METHOD;
+			PROPERTY, METHOD
 		}
 	}
 }

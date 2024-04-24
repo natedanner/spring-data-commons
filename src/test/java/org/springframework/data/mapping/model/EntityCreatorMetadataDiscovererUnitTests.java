@@ -65,9 +65,10 @@ class EntityCreatorMetadataDiscovererUnitTests {
 				.isThrownBy(() -> new BasicPersistentEntity<>(TypeInformation.of(NonStaticFactoryMethod.class)));
 	}
 
-	static class Person {
+	static final class Person {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 
 		private Person(String firstname, String lastname) {
 			this.firstname = firstname;
@@ -85,9 +86,10 @@ class EntityCreatorMetadataDiscovererUnitTests {
 
 	}
 
-	static class FactoryMethodsPerson {
+	static final class FactoryMethodsPerson {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 
 		private FactoryMethodsPerson(String firstname, String lastname) {
 			this.firstname = firstname;
@@ -104,9 +106,10 @@ class EntityCreatorMetadataDiscovererUnitTests {
 		}
 	}
 
-	static class ConstructorPerson {
+	static final class ConstructorPerson {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 
 		private ConstructorPerson(String firstname, String lastname) {
 			this.firstname = firstname;

@@ -51,8 +51,7 @@ class RepositoryBeanDefinitionReader {
 
 		if (metadata instanceof RepositoryFragmentConfigurationProvider provider) {
 
-			return Lazy.of(() -> {
-				return provider.getFragmentConfiguration().stream().flatMap(it -> {
+			return Lazy.of(() -> provider.getFragmentConfiguration().stream().flatMap(it -> {
 
 					List<RepositoryFragment<?>> fragments = new ArrayList<>(1);
 
@@ -61,8 +60,7 @@ class RepositoryBeanDefinitionReader {
 					fragments.add(RepositoryFragment.structural(forName(it.getInterfaceName(), beanFactory)));
 
 					return fragments.stream();
-				}).collect(Collectors.toList());
-			});
+				}).collect(Collectors.toList()));
 		}
 
 		return Lazy.of(Collections::emptyList);
@@ -73,10 +71,9 @@ class RepositoryBeanDefinitionReader {
 			ConfigurableListableBeanFactory beanFactory) {
 
 		return Lazy.of(() -> (Class<?>) metadata.getRepositoryBaseClassName().map(it -> forName(it.toString(), beanFactory))
-				.orElseGet(() -> {
+				.orElseGet(() ->
 					// TODO: retrieve the default without loading the actual RepositoryBeanFactory
-					return Object.class;
-				}));
+					Object.class));
 	}
 
 	private static Supplier<org.springframework.data.repository.core.RepositoryMetadata> metadataSupplier(

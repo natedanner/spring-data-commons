@@ -50,7 +50,7 @@ class SpringDataWebConfigurationIntegrationTests {
 	@Test // DATACMNS-987
 	void shouldNotLoadJacksonConverterWhenJacksonNotPresent() {
 
-		List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
+		List<HttpMessageConverter<?>> converters = new ArrayList<>();
 
 		createConfigWithClassLoader(HidingClassLoader.hide(ObjectMapper.class),
 				it -> it.extendMessageConverters(converters));
@@ -61,7 +61,7 @@ class SpringDataWebConfigurationIntegrationTests {
 	@Test // DATACMNS-987
 	void shouldNotLoadJacksonConverterWhenJaywayNotPresent() {
 
-		List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
+		List<HttpMessageConverter<?>> converters = new ArrayList<>();
 
 		createConfigWithClassLoader(HidingClassLoader.hide(DocumentContext.class),
 				it -> it.extendMessageConverters(converters));
@@ -72,7 +72,7 @@ class SpringDataWebConfigurationIntegrationTests {
 	@Test // DATACMNS-987
 	void shouldNotLoadXBeamConverterWhenXBeamNotPresent() throws Exception {
 
-		List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
+		List<HttpMessageConverter<?>> converters = new ArrayList<>();
 
 		ClassLoader classLoader = HidingClassLoader.hide(XBProjector.class);
 		createConfigWithClassLoader(classLoader, it -> it.extendMessageConverters(converters));
@@ -83,7 +83,7 @@ class SpringDataWebConfigurationIntegrationTests {
 	@Test // DATACMNS-987
 	void shouldLoadAllConvertersWhenDependenciesArePresent() throws Exception {
 
-		List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
+		List<HttpMessageConverter<?>> converters = new ArrayList<>();
 
 		createConfigWithClassLoader(getClass().getClassLoader(), it -> it.extendMessageConverters(converters));
 
@@ -100,11 +100,10 @@ class SpringDataWebConfigurationIntegrationTests {
 			it.extendMessageConverters(converters);
 
 			// Converters contains ProjectingJackson2HttpMessageConverter with custom ObjectMapper
-			assertThat(converters).anySatisfy(converter -> {
+			assertThat(converters).anySatisfy(converter ->
 				assertThat(converter).isInstanceOfSatisfying(ProjectingJackson2HttpMessageConverter.class, __ -> {
 					assertThat(__.getObjectMapper()).isSameAs(SomeConfiguration.MAPPER);
-				});
-			});
+				}));
 
 		}, SomeConfiguration.class);
 	}

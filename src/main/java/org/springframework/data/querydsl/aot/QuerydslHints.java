@@ -46,17 +46,15 @@ class QuerydslHints implements RuntimeHintsRegistrar {
 			// repository infrastructure
 			hints.reflection().registerTypes(Arrays.asList( //
 					TypeReference.of(Predicate.class), //
-					TypeReference.of(QuerydslPredicateExecutor.class)), builder -> {
-						builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS);
-					});
+					TypeReference.of(QuerydslPredicateExecutor.class)), builder ->
+						builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS));
 
 			if (ReactiveWrappers.PROJECT_REACTOR_PRESENT) {
 
 				// repository infrastructure
 				hints.reflection().registerTypes(Arrays.asList( //
-						TypeReference.of(ReactiveQuerydslPredicateExecutor.class)), builder -> {
-							builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS);
-						});
+						TypeReference.of(ReactiveQuerydslPredicateExecutor.class)), builder ->
+							builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS));
 			}
 		}
 	}

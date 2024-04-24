@@ -199,7 +199,7 @@ class AuditingHandlerUnitTests {
 		assertThat(handler.getAuditor()).isEqualTo(Auditor.none());
 	}
 
-	static abstract class AbstractModel {
+	abstract static class AbstractModel {
 
 		@CreatedDate Instant created;
 		@CreatedBy String creator;

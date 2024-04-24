@@ -97,8 +97,8 @@ public abstract class RepositoryFactorySupport implements BeanClassLoaderAware, 
 
 	private Optional<Class<?>> repositoryBaseClass;
 	private @Nullable QueryLookupStrategy.Key queryLookupStrategyKey;
-	private List<QueryCreationListener<?>> queryPostProcessors;
-	private List<RepositoryMethodInvocationListener> methodInvocationListeners;
+	private final List<QueryCreationListener<?>> queryPostProcessors;
+	private final List<RepositoryMethodInvocationListener> methodInvocationListeners;
 	private NamedQueries namedQueries;
 	private ClassLoader classLoader;
 	private QueryMethodEvaluationContextProvider evaluationContextProvider;
@@ -733,27 +733,23 @@ public abstract class RepositoryFactorySupport implements BeanClassLoaderAware, 
 
 			org.springframework.data.repository.util.ClassUtils.ifPresent(
 					"org.springframework.data.querydsl.QuerydslPredicateExecutor", RepositoryValidator.class.getClassLoader(),
-					it -> {
-						WELL_KNOWN_EXECUTORS.put(it, "Querydsl");
-					});
+					it ->
+						WELL_KNOWN_EXECUTORS.put(it, "Querydsl"));
 
 			org.springframework.data.repository.util.ClassUtils.ifPresent(
 					"org.springframework.data.querydsl.ReactiveQuerydslPredicateExecutor",
-					RepositoryValidator.class.getClassLoader(), it -> {
-						WELL_KNOWN_EXECUTORS.put(it, "Reactive Querydsl");
-					});
+					RepositoryValidator.class.getClassLoader(), it ->
+						WELL_KNOWN_EXECUTORS.put(it, "Reactive Querydsl"));
 
 			org.springframework.data.repository.util.ClassUtils.ifPresent(
 					"org.springframework.data.repository.query.QueryByExampleExecutor",
-					RepositoryValidator.class.getClassLoader(), it -> {
-						WELL_KNOWN_EXECUTORS.put(it, "Query by Example");
-					});
+					RepositoryValidator.class.getClassLoader(), it ->
+						WELL_KNOWN_EXECUTORS.put(it, "Query by Example"));
 
 			org.springframework.data.repository.util.ClassUtils.ifPresent(
 					"org.springframework.data.repository.query.ReactiveQueryByExampleExecutor",
-					RepositoryValidator.class.getClassLoader(), it -> {
-						WELL_KNOWN_EXECUTORS.put(it, "Reactive Query by Example");
-					});
+					RepositoryValidator.class.getClassLoader(), it ->
+						WELL_KNOWN_EXECUTORS.put(it, "Reactive Query by Example"));
 		}
 
 		/**

@@ -85,7 +85,7 @@ class KotlinInstantiationDelegate {
 	static boolean hasDefaultConstructorMarker(java.lang.reflect.Parameter[] parameters) {
 
 		return parameters.length > 0
-				&& parameters[parameters.length - 1].getType().getName().equals("kotlin.jvm.internal.DefaultConstructorMarker");
+				&& "kotlin.jvm.internal.DefaultConstructorMarker".equals(parameters[parameters.length - 1].getType().getName());
 	}
 
 	/**
@@ -214,7 +214,7 @@ class KotlinInstantiationDelegate {
 				}
 			} else {
 
-				int optionalParameterCount = (int) kotlinFunction.getParameters().stream().filter(it -> it.isOptional())
+				int optionalParameterCount = (int) kotlinFunction.getParameters().stream().filter(KParameter::isOptional)
 						.count();
 				int syntheticParameters = KotlinDefaultMask.getExactMaskCount(optionalParameterCount);
 

@@ -178,9 +178,8 @@ class RepositoriesUnitTests {
 
 		var repositories = new Repositories(beanFactory);
 
-		assertThat(repositories.getRepositoryFor(SomeEntity.class)).hasValueSatisfying(it -> {
-			assertThat(it).isInstanceOf(PrimaryRepository.class);
-		});
+		assertThat(repositories.getRepositoryFor(SomeEntity.class)).hasValueSatisfying(it ->
+			assertThat(it).isInstanceOf(PrimaryRepository.class));
 	}
 
 	@Test // DATACMNS-1142
@@ -200,9 +199,8 @@ class RepositoriesUnitTests {
 
 		var repositories = new Repositories(context);
 
-		assertThat(repositories.getRepositoryFor(SomeEntity.class)).hasValueSatisfying(it -> {
-			assertThat(it).isInstanceOf(PrimaryRepository.class);
-		});
+		assertThat(repositories.getRepositoryFor(SomeEntity.class)).hasValueSatisfying(it ->
+			assertThat(it).isInstanceOf(PrimaryRepository.class));
 	}
 
 	@Test // GH-2406

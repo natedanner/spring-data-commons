@@ -62,7 +62,7 @@ public final class KotlinReflectionUtils {
 		}
 
 		return Arrays.stream(type.getDeclaredAnnotations()) //
-				.filter(annotation -> annotation.annotationType().getName().equals("kotlin.Metadata")) //
+				.filter(annotation -> "kotlin.Metadata".equals(annotation.annotationType().getName())) //
 				.map(annotation -> AnnotationUtils.getValue(annotation, "k")) //
 				.anyMatch(it -> Integer.valueOf(KotlinClassHeaderKind.CLASS.id).equals(it));
 	}

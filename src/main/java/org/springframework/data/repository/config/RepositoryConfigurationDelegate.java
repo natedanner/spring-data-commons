@@ -346,7 +346,7 @@ public class RepositoryConfigurationDelegate {
 		ResolvableType[] declaredGenerics = ResolvableType.forClass(factoryBean).getGenerics();
 		ResolvableType[] parentGenerics = ResolvableType.forClass(RepositoryFactoryBeanSupport.class, factoryBean)
 				.getGenerics();
-		List<ResolvableType> resolvedGenerics = new ArrayList<ResolvableType>(factoryBean.getTypeParameters().length);
+		List<ResolvableType> resolvedGenerics = new ArrayList<>(factoryBean.getTypeParameters().length);
 
 		for (int i = 0; i < parentGenerics.length; i++) {
 

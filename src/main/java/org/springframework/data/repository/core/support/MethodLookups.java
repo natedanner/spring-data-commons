@@ -266,7 +266,7 @@ interface MethodLookups {
 		 */
 		private Predicate<ParameterOverrideCriteria> matchParameterOrComponentType(Class<?> repositoryInterface) {
 
-			return (parameterCriteria) -> {
+			return parameterCriteria -> {
 
 				Class<?> parameterType = parameterCriteria.getDeclared().withContainingClass(repositoryInterface)
 						.getParameterType();
@@ -353,7 +353,7 @@ interface MethodLookups {
 		 */
 		private static Predicate<ParameterOverrideCriteria> wrapperConversionMatch() {
 
-			return (parameterCriteria) -> isNonUnwrappingWrapper(parameterCriteria.getBaseType()) //
+			return parameterCriteria -> isNonUnwrappingWrapper(parameterCriteria.getBaseType()) //
 					&& isNonUnwrappingWrapper(parameterCriteria.getDeclaredType()) //
 					&& ReactiveWrapperConverters.canConvert(parameterCriteria.getDeclaredType(), parameterCriteria.getBaseType());
 		}
@@ -367,7 +367,7 @@ interface MethodLookups {
 		 */
 		private static Predicate<ParameterOverrideCriteria> assignableWrapperMatch() {
 
-			return (parameterCriteria) -> isNonUnwrappingWrapper(parameterCriteria.getBaseType()) //
+			return parameterCriteria -> isNonUnwrappingWrapper(parameterCriteria.getBaseType()) //
 					&& isNonUnwrappingWrapper(parameterCriteria.getDeclaredType()) //
 					&& parameterCriteria.getBaseType().isAssignableFrom(parameterCriteria.getDeclaredType());
 		}

@@ -280,8 +280,8 @@ public interface ExampleMatcher {
 	 */
 	class GenericPropertyMatcher {
 
-		@Nullable StringMatcher stringMatcher = null;
-		@Nullable Boolean ignoreCase = null;
+		@Nullable StringMatcher stringMatcher;
+		@Nullable Boolean ignoreCase;
 		PropertyValueTransformer valueTransformer = NoOpPropertyValueTransformer.INSTANCE;
 
 		/**
@@ -451,8 +451,9 @@ public interface ExampleMatcher {
 				return false;
 			}
 
-			if (stringMatcher != that.stringMatcher)
+			if (stringMatcher != that.stringMatcher) {
 				return false;
+			}
 
 			if (!ObjectUtils.nullSafeEquals(ignoreCase, that.ignoreCase)) {
 				return false;
@@ -582,7 +583,7 @@ public interface ExampleMatcher {
 		/**
 		 * Treats strings as regular expression patterns
 		 */
-		REGEX;
+		REGEX
 	}
 
 	/**
@@ -741,8 +742,9 @@ public interface ExampleMatcher {
 				return false;
 			}
 
-			if (stringMatcher != that.stringMatcher)
+			if (stringMatcher != that.stringMatcher) {
 				return false;
+			}
 
 			if (!ObjectUtils.nullSafeEquals(ignoreCase, that.ignoreCase)) {
 				return false;
@@ -833,6 +835,6 @@ public interface ExampleMatcher {
 	 * @see ExampleMatcher#isAllMatching()
 	 */
 	enum MatchMode {
-		ALL, ANY;
+		ALL, ANY
 	}
 }

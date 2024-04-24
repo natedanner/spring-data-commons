@@ -277,7 +277,7 @@ class CustomConversionsUnitTests {
 	void doesNotFailIfPropertiesConversionIsNull() {
 
 		new CustomConversions(
-				new ConverterConfiguration(StoreConversions.NONE, Collections.emptyList(), (it) -> true, null));
+				new ConverterConfiguration(StoreConversions.NONE, Collections.emptyList(), it -> true, null));
 	}
 
 	@Test

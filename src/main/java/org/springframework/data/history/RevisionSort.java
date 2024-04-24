@@ -28,7 +28,7 @@ import org.springframework.util.Assert;
  * @since 1.13
  * @soundtrack Benny Greb's Moving Parts - Soulfood (Live)
  */
-public class RevisionSort extends Sort {
+public final class RevisionSort extends Sort {
 
 	private static final long serialVersionUID = 618238321589063537L;
 

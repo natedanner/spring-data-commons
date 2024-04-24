@@ -70,9 +70,9 @@ public abstract class RepositoryFactoryBeanSupport<T extends Repository<S, ID>, 
 	private Optional<MappingContext<?, ?>> mappingContext = Optional.empty();
 	private ClassLoader classLoader;
 	private BeanFactory beanFactory;
-	private boolean lazyInit = false;
+	private boolean lazyInit;
 	private Optional<QueryMethodEvaluationContextProvider> evaluationContextProvider = Optional.empty();
-	private List<RepositoryFactoryCustomizer> repositoryFactoryCustomizers = new ArrayList<>();
+	private final List<RepositoryFactoryCustomizer> repositoryFactoryCustomizers = new ArrayList<>();
 	private ApplicationEventPublisher publisher;
 
 	private Lazy<T> repository;

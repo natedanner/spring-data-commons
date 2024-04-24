@@ -293,7 +293,7 @@ class KotlinClassGeneratingEntityInstantiatorUnitTests {
 
 	data class WithPrimitiveDefaulting(
 		val aByte: Byte = 0, val aShort: Short = 0, val anInt: Int = 0, val aLong: Long = 0L,
-		val aFloat: Float = 0.0f, val aDouble: Double = 0.0, val aChar: Char = 'a', val aBool: Boolean = true
+		val aFloat: Float = 0.0F, val aDouble: Double = 0.0, val aChar: Char = 'a', val aBool: Boolean = true
 	)
 
 

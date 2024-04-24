@@ -81,7 +81,7 @@ public class BasicPersistentEntity<T, P extends PersistentProperty<P>> implement
 	private @Nullable P versionProperty;
 	private PersistentPropertyAccessorFactory propertyAccessorFactory;
 	private EvaluationContextProvider evaluationContextProvider = EvaluationContextProvider.DEFAULT;
-	private @Nullable Environment environment = null;
+	private @Nullable Environment environment;
 
 	private final Lazy<Alias> typeAlias;
 	private final Lazy<IsNewStrategy> isNewStrategy;
@@ -432,7 +432,7 @@ public class BasicPersistentEntity<T, P extends PersistentProperty<P>> implement
 
 		Iterator<P> iterator = properties.iterator();
 
-		return new Iterator<P>() {
+		return new Iterator<>() {
 
 			@Override
 			public boolean hasNext() {

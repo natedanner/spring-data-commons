@@ -115,7 +115,7 @@ public class ProjectingArgumentResolverRegistrar {
 						String.format("No HandlerMethodArgumentResolvers found in RequestMappingHandlerAdapter %s", beanName));
 			}
 
-			List<HandlerMethodArgumentResolver> newResolvers = new ArrayList<HandlerMethodArgumentResolver>(
+			List<HandlerMethodArgumentResolver> newResolvers = new ArrayList<>(
 					currentResolvers.size() + 1);
 			newResolvers.add(resolver);
 			newResolvers.addAll(currentResolvers);

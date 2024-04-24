@@ -102,7 +102,7 @@ class ParameterUnitTests<P extends PersistentProperty<P>> {
 		PersistentEntity pe = Mockito.mock(PersistentEntity.class);
 		when(pe.getType()).thenReturn(RecordMember.class);
 
-		Parameter<IFace, P> iFace = new Parameter<IFace, P>("iFace", TypeInformation.of(IFace.class), annotations, pe);
+		Parameter<IFace, P> iFace = new Parameter<>("iFace", TypeInformation.of(IFace.class), annotations, pe);
 		assertThat(iFace.isEnclosingClassParameter()).isFalse();
 	}
 
@@ -112,7 +112,7 @@ class ParameterUnitTests<P extends PersistentProperty<P>> {
 		PersistentEntity pe = Mockito.mock(PersistentEntity.class);
 		when(pe.getType()).thenReturn(ClassMember.class);
 
-		Parameter<IFace, P> iFace = new Parameter<IFace, P>("iFace", TypeInformation.of(IFace.class), annotations, pe);
+		Parameter<IFace, P> iFace = new Parameter<>("iFace", TypeInformation.of(IFace.class), annotations, pe);
 		assertThat(iFace.isEnclosingClassParameter()).isFalse();
 	}
 
@@ -122,7 +122,7 @@ class ParameterUnitTests<P extends PersistentProperty<P>> {
 		PersistentEntity pe = Mockito.mock(PersistentEntity.class);
 		when(pe.getType()).thenReturn(NonStaticInner.class);
 
-		Parameter<StaticType, P> iFace = new Parameter<StaticType, P>("outer", TypeInformation.of(StaticType.class),
+		Parameter<StaticType, P> iFace = new Parameter<>("outer", TypeInformation.of(StaticType.class),
 				annotations, pe);
 		assertThat(iFace.isEnclosingClassParameter()).isTrue();
 	}
@@ -133,7 +133,7 @@ class ParameterUnitTests<P extends PersistentProperty<P>> {
 		PersistentEntity pe = Mockito.mock(PersistentEntity.class);
 		when(pe.getType()).thenReturn(StaticInner.class);
 
-		Parameter<StaticType, P> iFace = new Parameter<StaticType, P>("outer", TypeInformation.of(StaticType.class),
+		Parameter<StaticType, P> iFace = new Parameter<>("outer", TypeInformation.of(StaticType.class),
 				annotations, pe);
 		assertThat(iFace.isEnclosingClassParameter()).isFalse();
 	}
@@ -144,7 +144,7 @@ class ParameterUnitTests<P extends PersistentProperty<P>> {
 		PersistentEntity pe = Mockito.mock(PersistentEntity.class);
 		when(pe.getType()).thenReturn(RecordInner.class);
 
-		Parameter<StaticType, P> iFace = new Parameter<StaticType, P>("outer", TypeInformation.of(StaticType.class),
+		Parameter<StaticType, P> iFace = new Parameter<>("outer", TypeInformation.of(StaticType.class),
 				annotations, pe);
 		assertThat(iFace.isEnclosingClassParameter()).isFalse();
 	}

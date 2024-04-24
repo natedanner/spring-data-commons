@@ -65,7 +65,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 		assertThatContribution(repositoryBeanContribution) //
 				.targetRepositoryTypeIs(ConfigWithSimpleCrudRepository.MyRepo.class) //
 				.hasNoFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					contribution.contributesReflectionFor(ConfigWithSimpleCrudRepository.MyRepo.class) // repository interface
 							.contributesReflectionFor(PagingAndSortingRepository.class) // base repository
 							.contributesReflectionFor(ConfigWithSimpleCrudRepository.Person.class) // repository domain type
@@ -74,8 +74,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 							.contributesJdkProxy(ConfigWithSimpleCrudRepository.MyRepo.class, Repository.class,
 									TransactionalProxy.class, Advised.class, DecoratingProxy.class)
 							.doesNotContributeJdkProxy(ConfigWithSimpleCrudRepository.MyRepo.class, Repository.class,
-									TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class);
-				});
+									TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class));
 	}
 
 	@Test // GH-2593
@@ -87,7 +86,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 		assertThatContribution(repositoryBeanContribution) //
 				.targetRepositoryTypeIs(ConfigWithTransactionManagerPresent.MyTxRepo.class) //
 				.hasNoFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					contribution.contributesReflectionFor(ConfigWithTransactionManagerPresent.MyTxRepo.class) // repository
 																																																		// interface
 							.contributesReflectionFor(PagingAndSortingRepository.class) // base repository
@@ -99,8 +98,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 							.contributesJdkProxy(ConfigWithTransactionManagerPresent.MyTxRepo.class, Repository.class,
 									TransactionalProxy.class, Advised.class, DecoratingProxy.class)
 							.doesNotContributeJdkProxy(ConfigWithTransactionManagerPresent.MyTxRepo.class, Repository.class,
-									TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class);
-				});
+									TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class));
 	}
 
 	@Test // GH-2593
@@ -114,7 +112,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 				.targetRepositoryTypeIs(
 						ConfigWithTransactionManagerPresentAndAtComponentAnnotatedRepository.MyComponentTxRepo.class) //
 				.hasNoFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					contribution
 							.contributesReflectionFor(
 									ConfigWithTransactionManagerPresentAndAtComponentAnnotatedRepository.MyComponentTxRepo.class) // repository
@@ -132,8 +130,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 									Repository.class, TransactionalProxy.class, Advised.class, DecoratingProxy.class)
 							.contributesJdkProxy(
 									ConfigWithTransactionManagerPresentAndAtComponentAnnotatedRepository.MyComponentTxRepo.class,
-									Repository.class, TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class);
-				});
+									Repository.class, TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class));
 	}
 
 	@Test // GH-2593
@@ -145,7 +142,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 		assertThatContribution(repositoryBeanContribution) //
 				.targetRepositoryTypeIs(ConfigWithFragments.RepositoryWithFragments.class) //
 				.hasFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					contribution.contributesReflectionFor(ConfigWithFragments.RepositoryWithFragments.class) // repository
 							// interface
 							.contributesReflectionFor(PagingAndSortingRepository.class) // base repository
@@ -165,8 +162,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 									Repository.class, TransactionalProxy.class, Advised.class, DecoratingProxy.class)
 							.doesNotContributeJdkProxy(
 									ConfigWithTransactionManagerPresentAndAtComponentAnnotatedRepository.MyComponentTxRepo.class,
-									Repository.class, TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class);
-				});
+									Repository.class, TransactionalProxy.class, Advised.class, DecoratingProxy.class, Serializable.class));
 	}
 
 	@Test // GH-2593
@@ -179,7 +175,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 		assertThatContribution(repositoryBeanContribution) //
 				.targetRepositoryTypeIs(ConfigWithCustomImplementation.RepositoryWithCustomImplementation.class) //
 				.hasFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					contribution.contributesReflectionFor(ConfigWithCustomImplementation.RepositoryWithCustomImplementation.class) // repository
 							// interface
 							.contributesReflectionFor(PagingAndSortingRepository.class) // base repository
@@ -187,9 +183,7 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 
 							// fragments
 							.contributesReflectionFor(ConfigWithCustomImplementation.CustomImplInterface.class,
-									ConfigWithCustomImplementation.RepositoryWithCustomImplementationImpl.class);
-
-				});
+									ConfigWithCustomImplementation.RepositoryWithCustomImplementationImpl.class));
 	}
 
 	@Test // GH-2593
@@ -212,12 +206,11 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 		assertThatContribution(repositoryBeanContribution) //
 				.targetRepositoryTypeIs(ReactiveConfig.CustomerRepositoryReactive.class) //
 				.hasNoFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					// interface
 					contribution.contributesReflectionFor(ReactiveConfig.CustomerRepositoryReactive.class) // repository
 							.contributesReflectionFor(ReactiveSortingRepository.class) // base repo class
-							.contributesReflectionFor(ReactiveConfig.Person.class); // repository domain type
-				});
+							.contributesReflectionFor(ReactiveConfig.Person.class));
 	}
 
 	@Test // GH-2593
@@ -230,13 +223,12 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 		assertThatContribution(repositoryBeanContribution) //
 				.targetRepositoryTypeIs(ConfigWithCustomRepositoryBaseClass.CustomerRepositoryWithCustomBaseRepo.class) //
 				.hasNoFragments() //
-				.codeContributionSatisfies(contribution -> { //
+				.codeContributionSatisfies(contribution -> //
 					// interface
 					contribution
 							.contributesReflectionFor(ConfigWithCustomRepositoryBaseClass.CustomerRepositoryWithCustomBaseRepo.class) // repository
 							.contributesReflectionFor(ConfigWithCustomRepositoryBaseClass.RepoBaseClass.class) // base repo class
-							.contributesReflectionFor(ConfigWithCustomRepositoryBaseClass.Person.class); // repository domain type
-				});
+							.contributesReflectionFor(ConfigWithCustomRepositoryBaseClass.Person.class));
 	}
 
 	@Test // GH-2593
@@ -310,9 +302,8 @@ public class RepositoryRegistrationAotProcessorIntegrationTests {
 				InheritedEventPublicationConfiguration.class)
 						.forRepository(InheritedEventPublicationConfiguration.SampleRepository.class);
 
-		assertThatContribution(contribution).codeContributionSatisfies(it -> {
-			it.contributesReflectionFor(AbstractAggregateRoot.class);
-		});
+		assertThatContribution(contribution).codeContributionSatisfies(it ->
+			it.contributesReflectionFor(AbstractAggregateRoot.class));
 	}
 
 	RepositoryRegistrationAotContributionBuilder computeAotConfiguration(Class<?> configuration) {

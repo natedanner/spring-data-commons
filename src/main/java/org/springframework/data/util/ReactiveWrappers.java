@@ -81,7 +81,7 @@ public abstract class ReactiveWrappers {
 	 */
 	public enum ReactiveLibrary {
 
-		PROJECT_REACTOR, RXJAVA3, KOTLIN_COROUTINES, MUTINY;
+		PROJECT_REACTOR, RXJAVA3, KOTLIN_COROUTINES, MUTINY
 	}
 
 	/**

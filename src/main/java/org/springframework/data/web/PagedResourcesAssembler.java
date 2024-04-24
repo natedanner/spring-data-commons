@@ -57,7 +57,7 @@ public class PagedResourcesAssembler<T> implements RepresentationModelAssembler<
 	private final Optional<UriComponents> baseUri;
 	private final EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
 
-	private boolean forceFirstAndLastRels = false;
+	private boolean forceFirstAndLastRels;
 	private @Nullable MethodParameter parameter;
 
 	/**

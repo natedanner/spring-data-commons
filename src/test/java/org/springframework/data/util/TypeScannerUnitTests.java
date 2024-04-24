@@ -69,7 +69,7 @@ class TypeScannerUnitTests {
 					throw new IllegalStateException(ex);
 				});
 
-		assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() -> scanner.collectAsSet()); // no exception
+		assertThatExceptionOfType(IllegalStateException.class).isThrownBy(scanner::collectAsSet); // no exception
 	}
 
 	@Retention(RetentionPolicy.RUNTIME)

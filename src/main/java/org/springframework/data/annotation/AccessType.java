@@ -40,6 +40,6 @@ public @interface AccessType {
 	Type value();
 
 	enum Type {
-		FIELD, PROPERTY;
+		FIELD, PROPERTY
 	}
 }

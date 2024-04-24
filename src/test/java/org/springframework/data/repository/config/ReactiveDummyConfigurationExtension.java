@@ -35,9 +35,6 @@ class ReactiveDummyConfigurationExtension extends RepositoryConfigurationExtensi
 
 	@Override
 	protected boolean useRepositoryConfiguration(RepositoryMetadata metadata) {
-		if(metadata.isReactiveRepository()) {
-			return true;
-		}
-		return false;
+		return metadata.isReactiveRepository();
 	}
 }

@@ -64,9 +64,8 @@ class RepositoryRuntimeHints implements RuntimeHintsRegistrar {
 				TypeReference.of(RepositoryMetadata.class), //
 				TypeReference.of(FluentQuery.class), //
 				TypeReference.of(FetchableFluentQuery.class) //
-		), builder -> {
-			builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS);
-		});
+		), builder ->
+			builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS));
 
 		if (ReactiveWrappers.PROJECT_REACTOR_PRESENT) {
 
@@ -74,9 +73,8 @@ class RepositoryRuntimeHints implements RuntimeHintsRegistrar {
 			hints.reflection().registerTypes(Arrays.asList( //
 					TypeReference.of(ReactiveFluentQuery.class), //
 					TypeReference.of(ReactiveQueryByExampleExecutor.class)), //
-					builder -> {
-						builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS);
-					});
+					builder ->
+						builder.withMembers(MemberCategory.INVOKE_PUBLIC_METHODS));
 		}
 
 		// named queries

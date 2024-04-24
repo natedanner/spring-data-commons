@@ -330,10 +330,9 @@ class ResultProcessorUnitTests {
 				.processResult(Flux.just(new ConcreteDto("Walter", "White")));
 
 		result.as(StepVerifier::create) //
-				.consumeNextWith(actual -> {
+				.consumeNextWith(actual ->
 
-					assertThat(actual).isInstanceOf(ConcreteDto.class);
-				}).verifyComplete();
+					assertThat(actual).isInstanceOf(ConcreteDto.class)).verifyComplete();
 	}
 
 	private static ResultProcessor getProcessor(String methodName, Class<?>... parameters) throws Exception {
@@ -393,7 +392,8 @@ class ResultProcessorUnitTests {
 	}
 
 	static class Sample {
-		public String firstname, lastname;
+		public String firstname;
+		public String lastname;
 
 		public Sample(String firstname, String lastname) {
 			this.firstname = firstname;
@@ -401,8 +401,9 @@ class ResultProcessorUnitTests {
 		}
 	}
 
-	static abstract class AbstractDto {
-		final String firstname, lastname;
+	abstract static class AbstractDto {
+		final String firstname;
+		final String lastname;
 
 		public AbstractDto(String firstname, String lastname) {
 			this.firstname = firstname;

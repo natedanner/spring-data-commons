@@ -41,10 +41,10 @@ import org.springframework.data.mapping.context.SamplePersistentProperty;
  */
 class SimplePersistentPropertyPathAccessorUnitTests {
 
-	private SampleMappingContext context = new SampleMappingContext();
+	private final SampleMappingContext context = new SampleMappingContext();
 
-	private Customer first = new Customer("1");
-	private Customer second = new Customer("2");
+	private final Customer first = new Customer("1");
+	private final Customer second = new Customer("2");
 
 	@Test // DATACMNS-1438
 	void setsPropertyContainingCollectionPathForAllElements() {
@@ -75,9 +75,8 @@ class SimplePersistentPropertyPathAccessorUnitTests {
 		var path = context.getPersistentPropertyPath("customer.firstname",
 				CustomerWrapper.class);
 
-		assertThatCode(() -> {
-			accessor.setProperty(path, "Dave", AccessOptions.defaultSetOptions().withNullHandling(SetNulls.SKIP));
-		}).doesNotThrowAnyException();
+		assertThatCode(() ->
+			accessor.setProperty(path, "Dave", AccessOptions.defaultSetOptions().withNullHandling(SetNulls.SKIP))).doesNotThrowAnyException();
 	}
 
 	@Test // DATACMNS-1296
@@ -89,9 +88,8 @@ class SimplePersistentPropertyPathAccessorUnitTests {
 		var path = context
 				.getPersistentPropertyPath("wrapper.customer.firstname", CustomerWrapperWrapper.class);
 
-		assertThatCode(() -> {
-			accessor.setProperty(path, "Dave", AccessOptions.defaultSetOptions().skipNulls());
-		}).doesNotThrowAnyException();
+		assertThatCode(() ->
+			accessor.setProperty(path, "Dave", AccessOptions.defaultSetOptions().skipNulls())).doesNotThrowAnyException();
 	}
 
 	private void assertFirstnamesSetFor(Customers customers, String path) {
@@ -101,9 +99,8 @@ class SimplePersistentPropertyPathAccessorUnitTests {
 
 		getAccessor(customers).setProperty(propertyPath, "firstname");
 
-		Stream.of(first, second).forEach(it -> {
-			assertThat(it.firstname).isEqualTo("firstname");
-		});
+		Stream.of(first, second).forEach(it ->
+			assertThat(it.firstname).isEqualTo("firstname"));
 	}
 
 	private <T> PersistentPropertyPathAccessor<T> getAccessor(T source) {
@@ -111,9 +108,7 @@ class SimplePersistentPropertyPathAccessorUnitTests {
 		var type = source.getClass();
 
 		PersistentEntity<Object, SamplePersistentProperty> entity = context.getRequiredPersistentEntity(type);
-		var accessor = entity.getPropertyPathAccessor(source);
-
-		return accessor;
+		return entity.getPropertyPathAccessor(source);
 	}
 
 	static class Customer {

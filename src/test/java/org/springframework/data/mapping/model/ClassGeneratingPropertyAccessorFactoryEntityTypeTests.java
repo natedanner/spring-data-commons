@@ -37,7 +37,7 @@ import org.springframework.data.repository.core.support.PersistentEntityInformat
  */
 public class ClassGeneratingPropertyAccessorFactoryEntityTypeTests {
 
-	private SampleMappingContext mappingContext = new SampleMappingContext();
+	private final SampleMappingContext mappingContext = new SampleMappingContext();
 
 	@Test // DATACMNS-853
 	void getIdentifierOfInterfaceBasedEntity() {

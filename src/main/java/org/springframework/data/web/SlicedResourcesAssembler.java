@@ -57,7 +57,7 @@ public class SlicedResourcesAssembler<T>
 	private final Optional<UriComponents> baseUri;
 	private final EmbeddedWrappers wrappers = new EmbeddedWrappers(false);
 
-	private boolean forceFirstRel = false;
+	private boolean forceFirstRel;
 	private @Nullable MethodParameter parameter;
 
 	/**

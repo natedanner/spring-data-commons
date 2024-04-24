@@ -184,7 +184,7 @@ class ReactiveExtensionAwareEvaluationContextProviderUnitTests {
 	public static class WithStaticRole {
 
 		public static boolean hasRole(String arg) {
-			return arg.equals("ADMIN");
+			return "ADMIN".equals(arg);
 		}
 	}
 
@@ -276,7 +276,7 @@ class ReactiveExtensionAwareEvaluationContextProviderUnitTests {
 		}
 
 		public boolean isKnown(String role) {
-			return role.equals("FOO");
+			return "FOO".equals(role);
 		}
 	}
 
@@ -289,7 +289,7 @@ class ReactiveExtensionAwareEvaluationContextProviderUnitTests {
 		}
 
 		public boolean hasRole(String role) {
-			return role.equals("ADMIN");
+			return "ADMIN".equals(role);
 		}
 
 		public Object getPrincipal() {

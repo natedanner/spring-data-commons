@@ -94,10 +94,12 @@ class WindowImpl<T> implements Window<T> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 		WindowImpl<?> that = (WindowImpl<?>) o;
 		return ObjectUtils.nullSafeEquals(items, that.items)
 				&& ObjectUtils.nullSafeEquals(positionFunction, that.positionFunction)

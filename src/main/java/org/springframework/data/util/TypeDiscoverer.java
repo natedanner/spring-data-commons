@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -152,7 +153,7 @@ class TypeDiscoverer<S> implements TypeInformation<S> {
 
 		List<TypeInformation<?>> arguments = getTypeArguments();
 
-		if (arguments.size() > 0) {
+		if (!arguments.isEmpty()) {
 			return arguments.get(0);
 		}
 
@@ -260,7 +261,7 @@ class TypeDiscoverer<S> implements TypeInformation<S> {
 			return TypeInformation.of(resolvableSuperType);
 		}
 
-		var noGenericsResolvable = !Arrays.stream(resolvableSuperType.resolveGenerics()).filter(it -> it != null).findAny()
+		var noGenericsResolvable = !Arrays.stream(resolvableSuperType.resolveGenerics()).filter(Objects::nonNull).findAny()
 				.isPresent();
 
 		return noGenericsResolvable ? new ClassTypeInformation<>(ResolvableType.forRawClass(superType))
@@ -279,12 +280,7 @@ class TypeDiscoverer<S> implements TypeInformation<S> {
 		if (superTypeInformation.equals(this)) {
 			return true;
 		}
-
-		if (resolvableType.isAssignableFrom(target.getType())) {
-			return true;
-		}
-
-		return false;
+		return resolvableType.isAssignableFrom(target.getType());
 	}
 
 	@Override

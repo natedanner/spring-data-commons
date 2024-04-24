@@ -33,7 +33,7 @@ import com.querydsl.core.types.Path;
  * @author Johannes Englmeier
  * @since 1.13
  */
-class QuerydslPathInformation implements PathInformation {
+final class QuerydslPathInformation implements PathInformation {
 
 	private final Path<?> path;
 

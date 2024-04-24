@@ -115,7 +115,7 @@ class ReactiveRepositoryInformationUnitTests {
 
 	interface ReactiveJavaInterfaceWithGenerics extends ReactiveCrudRepository<User, String> {}
 
-	static abstract class DummyGenericReactiveRepositorySupport<T, ID> implements ReactiveCrudRepository<T, ID> {
+	abstract static class DummyGenericReactiveRepositorySupport<T, ID> implements ReactiveCrudRepository<T, ID> {
 
 	}
 

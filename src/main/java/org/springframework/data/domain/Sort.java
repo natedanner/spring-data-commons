@@ -194,7 +194,7 @@ public class Sort implements Streamable<org.springframework.data.domain.Sort.Ord
 
 		Assert.notNull(sort, "Sort must not be null");
 
-		List<Order> these = new ArrayList<Order>(this.toList());
+		List<Order> these = new ArrayList<>(this.toList());
 
 		for (Order order : sort) {
 			these.add(order);
@@ -378,7 +378,7 @@ public class Sort implements Streamable<org.springframework.data.domain.Sort.Ord
 		/**
 		 * A hint to the used data store to order entries with null values after non null entries.
 		 */
-		NULLS_LAST;
+		NULLS_LAST
 	}
 
 	/**
@@ -677,7 +677,7 @@ public class Sort implements Streamable<org.springframework.data.domain.Sort.Ord
 	 * @since 2.2
 	 * @soundtrack The Intersphere - Linger (The Grand Delusion)
 	 */
-	public static class TypedSort<T> extends Sort {
+	public static final class TypedSort<T> extends Sort {
 
 		private static final long serialVersionUID = -3550403511206745880L;
 

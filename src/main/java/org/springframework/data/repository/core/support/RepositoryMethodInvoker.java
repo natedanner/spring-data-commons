@@ -287,7 +287,7 @@ abstract class RepositoryMethodInvoker {
 		 * Value object capturing whether a suspended Kotlin method (Coroutine method) can be bridged with a native or
 		 * reactive fragment method.
 		 */
-		static class CoroutineAdapterInformation {
+		static final class CoroutineAdapterInformation {
 
 			private final boolean suspendedDeclaredMethod;
 			private final boolean suspendedBaseClassMethod;

@@ -118,7 +118,7 @@ class DefaultTypeMapperUnitTests {
 
 	static class Foo extends TypeWithAbstractGenericType<Character> {}
 
-	static abstract class AbstractBar<T> {}
+	abstract static class AbstractBar<T> {}
 
 	static class Bar<T> extends AbstractBar<T> {
 		T field;

@@ -109,7 +109,7 @@ class RepositoryFactoryBeanSupportUnitTests {
 		bean.afterPropertiesSet();
 
 		assertThatIllegalStateException() //
-				.isThrownBy(() -> bean.getPersistentEntity());
+				.isThrownBy(bean::getPersistentEntity);
 	}
 
 	interface SampleRepository extends Repository<Object, Long> {

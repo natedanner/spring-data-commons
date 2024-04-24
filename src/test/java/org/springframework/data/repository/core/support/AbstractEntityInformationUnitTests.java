@@ -100,7 +100,7 @@ class AbstractEntityInformationUnitTests {
 		@Id boolean id;
 	}
 
-	static class CustomEntityInformation<T, ID> extends AbstractEntityInformation<T, ID> {
+	static final class CustomEntityInformation<T, ID> extends AbstractEntityInformation<T, ID> {
 
 		private final Class<T> type;
 

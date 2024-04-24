@@ -70,7 +70,10 @@ import org.springframework.test.util.ReflectionTestUtils;
 @ExtendWith(MockitoExtension.class)
 class BasicPersistentEntityUnitTests<T extends PersistentProperty<T>> {
 
-	@Mock T property, anotherProperty;
+	@Mock
+	T property;
+	@Mock
+	T anotherProperty;
 
 	@Test
 	void assertInvariants() {
@@ -283,7 +286,7 @@ class BasicPersistentEntityUnitTests<T extends PersistentProperty<T>> {
 		var syncLatch = new CountDownLatch(1);
 		var failed = new AtomicBoolean(false);
 
-		PersistentEntity<EntityWithAnnotation, T> entity = new BasicPersistentEntity<EntityWithAnnotation, T>(
+		PersistentEntity<EntityWithAnnotation, T> entity = new BasicPersistentEntity<>(
 				TypeInformation.of(EntityWithAnnotation.class), null) {
 
 			@Nullable
@@ -445,7 +448,8 @@ class BasicPersistentEntityUnitTests<T extends PersistentProperty<T>> {
 
 	private static class PropertyPopulationRequired {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 		private String email;
 
 		public PropertyPopulationRequired(String firstname, String lastname) {
@@ -456,7 +460,8 @@ class BasicPersistentEntityUnitTests<T extends PersistentProperty<T>> {
 
 	private static class PropertyPopulationNotRequired {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 
 		public PropertyPopulationNotRequired(String firstname, String lastname) {
 			this.firstname = firstname;
@@ -466,7 +471,8 @@ class BasicPersistentEntityUnitTests<T extends PersistentProperty<T>> {
 
 	private static class PropertyPopulationNotRequiredWithTransient {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 		private @Transient String email;
 
 		public PropertyPopulationNotRequiredWithTransient(String firstname, String lastname) {

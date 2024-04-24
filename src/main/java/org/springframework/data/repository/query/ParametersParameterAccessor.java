@@ -220,7 +220,7 @@ public class ParametersParameterAccessor implements ParameterAccessor {
 		private final int bindableParameterCount;
 		private final ParameterAccessor accessor;
 
-		private int currentIndex = 0;
+		private int currentIndex;
 
 		/**
 		 * Creates a new {@link BindableParameterIterator}.

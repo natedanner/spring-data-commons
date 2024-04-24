@@ -99,13 +99,11 @@ class LockUnitTests {
 
 		ReadWriteLock lock = ReadWriteLock.of(backend);
 
-		lock.readLock().executeWithoutResult(() -> {
-			assertThat(backend.getReadLockCount()).isEqualTo(1);
-		});
+		lock.readLock().executeWithoutResult(() ->
+			assertThat(backend.getReadLockCount()).isEqualTo(1));
 
-		lock.writeLock().executeWithoutResult(() -> {
-			assertThat(backend.isWriteLocked()).isTrue();
-		});
+		lock.writeLock().executeWithoutResult(() ->
+			assertThat(backend.isWriteLocked()).isTrue());
 
 		assertThat(backend.getReadLockCount()).isEqualTo(0);
 		assertThat(backend.isWriteLocked()).isFalse();

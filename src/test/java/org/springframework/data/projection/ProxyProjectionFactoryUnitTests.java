@@ -259,9 +259,8 @@ class ProxyProjectionFactoryUnitTests {
 
 		var excerpt = factory.createProjection(CustomerWithOptional.class, customer);
 
-		assertThat(excerpt.getPicture()).hasValueSatisfying(bytes -> {
-			assertThat(bytes).isEqualTo(new byte[] { 1, 2, 3 });
-		});
+		assertThat(excerpt.getPicture()).hasValueSatisfying(bytes ->
+			assertThat(bytes).isEqualTo(new byte[] { 1, 2, 3 }));
 	}
 
 	@Test // DATACMNS-1762
@@ -289,9 +288,8 @@ class ProxyProjectionFactoryUnitTests {
 		var excerpt = factory.createProjection(CustomerWithOptionalHavingProjection.class, customer);
 
 		assertThat(excerpt.getFirstname()).isEqualTo("Dave");
-		assertThat(excerpt.getAddress()).hasValueSatisfying(addressExcerpt -> {
-			assertThat(addressExcerpt.getZipCode()).isEqualTo("ZIP");
-		});
+		assertThat(excerpt.getAddress()).hasValueSatisfying(addressExcerpt ->
+			assertThat(addressExcerpt.getZipCode()).isEqualTo("ZIP"));
 	}
 
 	@Test // DATACMNS-1836
@@ -339,7 +337,8 @@ class ProxyProjectionFactoryUnitTests {
 
 	static class Address {
 
-		String zipCode, city;
+		String zipCode;
+		String city;
 	}
 
 	interface CustomerExcerpt {
@@ -397,7 +396,8 @@ class ProxyProjectionFactoryUnitTests {
 	static class Customer implements Contact {
 
 		Long id;
-		String firstname, lastname;
+		String firstname;
+		String lastname;
 		Date birthdate;
 		Address address;
 		byte[] picture;

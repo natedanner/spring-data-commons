@@ -140,7 +140,7 @@ public class SpringDataJacksonConfiguration implements SpringDataJacksonModules 
 						or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
 					""";
 
-			private boolean warningRendered = false;
+			private boolean warningRendered;
 
 			@Nullable
 			@Override

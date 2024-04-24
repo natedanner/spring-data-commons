@@ -183,7 +183,7 @@ class PreferredConstructorDiscovererUnitTests<P extends PersistentProperty<P>> {
 		assertThat(constructor.getParameters().get(0).getRawType()).isEqualTo(String.class);
 	}
 
-	static class SyntheticConstructor {
+	static final class SyntheticConstructor {
 		@PersistenceConstructor
 		private SyntheticConstructor(String x) {}
 

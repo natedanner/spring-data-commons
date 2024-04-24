@@ -32,7 +32,7 @@ import org.springframework.util.ConcurrentReferenceHashMap;
  */
 public abstract class ProxyUtils {
 
-	private static Map<Class<?>, Class<?>> USER_TYPES = new ConcurrentReferenceHashMap<>();
+	private static final Map<Class<?>, Class<?>> USER_TYPES = new ConcurrentReferenceHashMap<>();
 
 	private static final List<ProxyDetector> DETECTORS = SpringFactoriesLoader.loadFactories(ProxyDetector.class,
 			ProxyUtils.class.getClassLoader());

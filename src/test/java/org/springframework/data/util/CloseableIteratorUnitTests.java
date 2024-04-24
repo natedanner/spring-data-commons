@@ -87,7 +87,7 @@ class CloseableIteratorUnitTests {
 	static class CloseableIteratorImpl<T> implements CloseableIterator<T> {
 
 		private final Iterator<T> delegate;
-		private boolean closed = false;
+		private boolean closed;
 
 		CloseableIteratorImpl(Iterator<T> delegate) {
 			this.delegate = delegate;

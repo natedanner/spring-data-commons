@@ -84,12 +84,7 @@ public final class ReflectionUtils {
 		if (type == Void.class || Void.TYPE == type) {
 			return true;
 		}
-
-		if (type.getName().equals("kotlin.Unit")) {
-			return true;
-		}
-
-		return false;
+		return "kotlin.Unit".equals(type.getName());
 	}
 
 	/**
@@ -278,8 +273,8 @@ public final class ReflectionUtils {
 		Method result = null;
 		Class<?> searchType = type;
 		while (searchType != null) {
-			Method[] methods = (searchType.isInterface() ? searchType.getMethods()
-					: org.springframework.util.ReflectionUtils.getDeclaredMethods(searchType));
+			Method[] methods = searchType.isInterface() ? searchType.getMethods()
+					: org.springframework.util.ReflectionUtils.getDeclaredMethods(searchType);
 			for (Method method : methods) {
 				if (name.equals(method.getName()) && hasSameParams(method, parameterTypes)) {
 					if (result == null || result.isSynthetic() || result.isBridge()) {
@@ -304,7 +299,7 @@ public final class ReflectionUtils {
 	}
 
 	private static boolean hasSameParams(Method method, Class<?>[] paramTypes) {
-		return (paramTypes.length == method.getParameterCount() && Arrays.equals(paramTypes, method.getParameterTypes()));
+		return paramTypes.length == method.getParameterCount() && Arrays.equals(paramTypes, method.getParameterTypes());
 	}
 
 	/**

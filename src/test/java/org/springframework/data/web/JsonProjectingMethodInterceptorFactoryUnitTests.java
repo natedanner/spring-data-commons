@@ -237,7 +237,8 @@ class JsonProjectingMethodInterceptorFactoryUnitTests {
 	}
 
 	static class Address {
-		private String zipCode, city;
+		private String zipCode;
+		private String city;
 
 		public Address() {}
 
@@ -264,10 +265,12 @@ class JsonProjectingMethodInterceptorFactoryUnitTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (o == null || getClass() != o.getClass())
+			}
+			if (o == null || getClass() != o.getClass()) {
 				return false;
+			}
 			Address address = (Address) o;
 			return ObjectUtils.nullSafeEquals(zipCode, address.zipCode) && ObjectUtils.nullSafeEquals(city, address.city);
 		}

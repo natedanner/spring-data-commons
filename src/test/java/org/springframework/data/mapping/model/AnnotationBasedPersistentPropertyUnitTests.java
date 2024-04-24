@@ -298,7 +298,7 @@ public class AnnotationBasedPersistentPropertyUnitTests<P extends AnnotationBase
 		var property = getProperty(Sample.class, "field");
 
 		assertThatIllegalArgumentException() //
-				.isThrownBy(() -> property.getRequiredGetter()) //
+				.isThrownBy(property::getRequiredGetter) //
 				.withMessageContaining("field") //
 				.withMessageContaining(Sample.class.getName());
 	}
@@ -309,7 +309,7 @@ public class AnnotationBasedPersistentPropertyUnitTests<P extends AnnotationBase
 		var property = getProperty(Sample.class, "field");
 
 		assertThatIllegalArgumentException() //
-				.isThrownBy(() -> property.getRequiredSetter()) //
+				.isThrownBy(property::getRequiredSetter) //
 				.withMessageContaining("field") //
 				.withMessageContaining(Sample.class.getName());
 	}
@@ -320,7 +320,7 @@ public class AnnotationBasedPersistentPropertyUnitTests<P extends AnnotationBase
 		var property = getProperty(Sample.class, "field");
 
 		assertThatIllegalArgumentException() //
-				.isThrownBy(() -> property.getRequiredWither()) //
+				.isThrownBy(property::getRequiredWither) //
 				.withMessageContaining("field") //
 				.withMessageContaining(Sample.class.getName());
 	}
@@ -331,7 +331,7 @@ public class AnnotationBasedPersistentPropertyUnitTests<P extends AnnotationBase
 		var property = getProperty(NoField.class, "firstname");
 
 		assertThatIllegalArgumentException() //
-				.isThrownBy(() -> property.getRequiredField()) //
+				.isThrownBy(property::getRequiredField) //
 				.withMessageContaining("firstname") //
 				.withMessageContaining(NoField.class.getName());
 	}
@@ -495,7 +495,8 @@ public class AnnotationBasedPersistentPropertyUnitTests<P extends AnnotationBase
 	@AccessType(Type.PROPERTY)
 	static class PropertyAccess {
 
-		String firstname, lastname;
+		String firstname;
+		String lastname;
 		@AccessType(Type.FIELD) String emailAddress;
 
 		public String getFirstname() {

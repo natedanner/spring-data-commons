@@ -30,7 +30,7 @@ import org.springframework.data.util.MethodInvocationRecorder.Recorded;
  */
 class MethodInvocationRecorderUnitTests {
 
-	private Recorded<Foo> recorder = MethodInvocationRecorder.forProxyOf(Foo.class);
+	private final Recorded<Foo> recorder = MethodInvocationRecorder.forProxyOf(Foo.class);
 
 	@Test // DATACMNS-1449
 	void rejectsFinalTypes() {
@@ -68,7 +68,7 @@ class MethodInvocationRecorderUnitTests {
 
 		var recorded = MethodInvocationRecorder.forProxyOf(Foo.class).record(Foo::getBar);
 
-		assertThat(recorded.getPropertyPath(method -> method.getName())).hasValue("getBar");
+		assertThat(recorded.getPropertyPath(java.lang.reflect.Method::getName)).hasValue("getBar");
 	}
 
 	@Test // DATACMNS-1449

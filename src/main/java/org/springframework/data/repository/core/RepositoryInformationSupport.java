@@ -195,7 +195,8 @@ public abstract class RepositoryInformationSupport implements RepositoryInformat
 	private static class DefaultQueryMethods {
 
 		private final Streamable<Method> methods;
-		private final boolean hasCustomMethod, hasQueryMethod;
+		private final boolean hasCustomMethod;
+		private final boolean hasQueryMethod;
 
 		DefaultQueryMethods(Streamable<Method> methods, boolean hasCustomMethod) {
 

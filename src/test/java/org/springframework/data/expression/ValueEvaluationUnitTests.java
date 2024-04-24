@@ -86,7 +86,7 @@ public class ValueEvaluationUnitTests {
 	@Test // GH-2369
 	void shouldParseLiteral() {
 
-		ValueParserConfiguration parserContext = () -> new SpelExpressionParser();
+		ValueParserConfiguration parserContext = SpelExpressionParser::new;
 		ValueExpressionParser parser = ValueExpressionParser.create(parserContext);
 
 		assertThat(parser.parse("#{'foo'}-${key.one}").isLiteral()).isFalse();

@@ -258,7 +258,7 @@ public class PropertyPath implements Streamable<PropertyPath> {
 	@Override
 	public Iterator<PropertyPath> iterator() {
 
-		return new Iterator<PropertyPath>() {
+		return new Iterator<>() {
 
 			private @Nullable PropertyPath current = PropertyPath.this;
 

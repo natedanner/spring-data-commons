@@ -163,7 +163,10 @@ class ReflectionUtilsUnitTests {
 
 		public String field;
 
-		@Autowired String first, second;
+		@Autowired
+		String first;
+		@Autowired
+		String second;
 	}
 
 	static class FieldNameFieldFilter implements DescribedFieldFilter {

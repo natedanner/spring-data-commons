@@ -168,11 +168,11 @@ class ClassGeneratingEntityInstantiatorUnitTests<P extends PersistentProperty<P>
 			@Override
 			public <T> T getParameterValue(Parameter<T, P> parameter) {
 
-				if (parameter.getName().equals("id")) {
+				if ("id".equals(parameter.getName())) {
 					return (T) Long.valueOf(1);
 				}
 
-				if (parameter.getName().equals("sample")) {
+				if ("sample".equals(parameter.getName())) {
 					return (T) instance.createInstance(inner, provider);
 				}
 
@@ -202,11 +202,11 @@ class ClassGeneratingEntityInstantiatorUnitTests<P extends PersistentProperty<P>
 			@Override
 			public <T> T getParameterValue(Parameter<T, P> parameter) {
 
-				if (parameter.getName().equals("id")) {
+				if ("id".equals(parameter.getName())) {
 					return (T) Long.valueOf(1);
 				}
 
-				if (parameter.getName().equals("name")) {
+				if ("name".equals(parameter.getName())) {
 					return (T) "Walter";
 				}
 
@@ -460,7 +460,7 @@ class ClassGeneratingEntityInstantiatorUnitTests<P extends PersistentProperty<P>
 		}
 	}
 
-	static class WithFactoryMethod {
+	static final class WithFactoryMethod {
 
 		final Long id;
 		final String name;
@@ -591,7 +591,7 @@ class ClassGeneratingEntityInstantiatorUnitTests<P extends PersistentProperty<P>
 
 	private static class PrivateInnerClass {}
 
-	static class ClassWithPrivateConstructor {
+	static final class ClassWithPrivateConstructor {
 
 		private ClassWithPrivateConstructor() {}
 	}
@@ -601,7 +601,7 @@ class ClassGeneratingEntityInstantiatorUnitTests<P extends PersistentProperty<P>
 		ClassWithPackagePrivateConstructor() {}
 	}
 
-	public static abstract class AbstractDto {
+	public abstract static class AbstractDto {
 
 	}
 

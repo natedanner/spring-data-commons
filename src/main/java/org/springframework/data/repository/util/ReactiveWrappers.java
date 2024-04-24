@@ -60,7 +60,7 @@ public abstract class ReactiveWrappers {
 	@Deprecated(since = "3.0", forRemoval = true)
 	public enum ReactiveLibrary {
 
-		PROJECT_REACTOR, RXJAVA3, KOTLIN_COROUTINES, MUTINY;
+		PROJECT_REACTOR, RXJAVA3, KOTLIN_COROUTINES, MUTINY
 	}
 
 	/**

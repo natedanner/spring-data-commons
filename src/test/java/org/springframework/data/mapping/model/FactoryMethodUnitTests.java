@@ -29,7 +29,7 @@ import org.springframework.data.util.TypeInformation;
  */
 class FactoryMethodUnitTests {
 
-	private static EntityInstantiators instantiators = new EntityInstantiators();
+	private static final EntityInstantiators instantiators = new EntityInstantiators();
 
 	@Test
 	void shouldCreateInstanceThroughFactoryMethod() {
@@ -42,11 +42,11 @@ class FactoryMethodUnitTests {
 					@Override
 					public Object getParameterValue(Parameter parameter) {
 
-						if (parameter.getName().equals("firstname")) {
+						if ("firstname".equals(parameter.getName())) {
 							return "Walter";
 						}
 
-						if (parameter.getName().equals("lastname")) {
+						if ("lastname".equals(parameter.getName())) {
 							return "White";
 						}
 						return null;
@@ -57,9 +57,10 @@ class FactoryMethodUnitTests {
 		assertThat(result.lastname).isEqualTo("Mr. White");
 	}
 
-	static class FactoryPerson {
+	static final class FactoryPerson {
 
-		private final String firstname, lastname;
+		private final String firstname;
+		private final String lastname;
 
 		private FactoryPerson(String firstname, String lastname) {
 			this.firstname = firstname;

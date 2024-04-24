@@ -386,7 +386,7 @@ public class QueryMethod {
 			}
 		}
 
-		static Predicate<Method> pageableCannotHaveSortOrLimit = (method) -> {
+		static Predicate<Method> pageableCannotHaveSortOrLimit = method -> {
 
 			if (!hasParameterAssignableToType(method, Pageable.class)) {
 				return true;

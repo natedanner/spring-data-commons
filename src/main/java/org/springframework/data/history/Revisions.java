@@ -31,9 +31,9 @@ import org.springframework.util.Assert;
  * @author Oliver Gierke
  * @author Christoph Strobl
  */
-public class Revisions<N extends Number & Comparable<N>, T> implements Streamable<Revision<N, T>> {
+public final class Revisions<N extends Number & Comparable<N>, T> implements Streamable<Revision<N, T>> {
 
-	private final Comparator<Revision<N, T>> NATURAL_ORDER = Comparator.naturalOrder();
+	private final Comparator<Revision<N, T>> naturalOrder = Comparator.naturalOrder();
 
 	private final List<Revision<N, T>> revisions;
 	private final boolean latestLast;
@@ -59,7 +59,7 @@ public class Revisions<N extends Number & Comparable<N>, T> implements Streamabl
 		Assert.notNull(revisions, "Revisions must not be null");
 
 		this.revisions = revisions.stream()//
-				.sorted(latestLast ? NATURAL_ORDER : NATURAL_ORDER.reversed())//
+				.sorted(latestLast ? naturalOrder : naturalOrder.reversed())//
 				.collect(StreamUtils.toUnmodifiableList());
 
 		this.latestLast = latestLast;

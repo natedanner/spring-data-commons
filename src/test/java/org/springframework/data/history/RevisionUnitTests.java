@@ -37,7 +37,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class RevisionUnitTests {
 
-	@Mock RevisionMetadata<Integer> firstMetadata, secondMetadata;
+	@Mock
+	RevisionMetadata<Integer> firstMetadata;
+	@Mock
+	RevisionMetadata<Integer> secondMetadata;
 
 	@Test
 	void comparesCorrectly() {

@@ -46,7 +46,7 @@ class PersistentEntityParameterValueProviderUnitTests<P extends PersistentProper
 
 		Object outer = new Outer();
 
-		PersistentEntity<Inner, P> entity = new BasicPersistentEntity<Inner, P>(TypeInformation.of(Inner.class)) {
+		PersistentEntity<Inner, P> entity = new BasicPersistentEntity<>(TypeInformation.of(Inner.class)) {
 
 			@Override
 			public P getPersistentProperty(String name) {

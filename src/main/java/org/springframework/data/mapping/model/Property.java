@@ -38,7 +38,7 @@ import org.springframework.util.StringUtils;
  * @author Christoph Strobl
  * @author Mark Paluch
  */
-public class Property {
+public final class Property {
 
 	private final Optional<Field> field;
 	private final Optional<PropertyDescriptor> descriptor;
@@ -264,7 +264,7 @@ public class Property {
 
 	private static Optional<Method> findWither(TypeInformation<?> owner, String propertyName, Class<?> rawType) {
 
-		AtomicReference<Method> resultHolder = new AtomicReference<Method>();
+		AtomicReference<Method> resultHolder = new AtomicReference<>();
 		String methodName = String.format("with%s", StringUtils.capitalize(propertyName));
 
 		ReflectionUtils.doWithMethods(owner.getType(), it -> {

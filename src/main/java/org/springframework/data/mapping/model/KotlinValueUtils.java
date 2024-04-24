@@ -129,12 +129,7 @@ class KotlinValueUtils {
 			public boolean shouldApplyBoxing(KType type, boolean optional, KParameter component) {
 
 				KType copyType = expandUnderlyingType(type);
-
-				if (copyType.getClassifier() instanceof KClass<?> kc && kc.isValue() || copyType.isMarkedNullable()) {
-					return true;
-				}
-
-				return false;
+				return copyType.getClassifier() instanceof KClass<?> kc && kc.isValue() || copyType.isMarkedNullable();
 			}
 
 			private static KType expandUnderlyingType(KType kotlinType) {
@@ -199,7 +194,7 @@ class KotlinValueUtils {
 	/**
 	 * Utility to represent Kotlin value class boxing.
 	 */
-	static class ValueBoxing {
+	static final class ValueBoxing {
 
 		private final KClass<?> kClass;
 

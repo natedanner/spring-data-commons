@@ -60,7 +60,7 @@ public abstract class PageableHandlerMethodArgumentResolverSupport {
 	private String prefix = DEFAULT_PREFIX;
 	private String qualifierDelimiter = DEFAULT_QUALIFIER_DELIMITER;
 	private int maxPageSize = DEFAULT_MAX_PAGE_SIZE;
-	private boolean oneIndexedParameters = false;
+	private boolean oneIndexedParameters;
 
 	/**
 	 * Configures the {@link Pageable} to be used as fallback in case no {@link PageableDefault} can be found at the

@@ -106,7 +106,7 @@ public @interface EnableSpringDataWebSupport {
 		 * {@link org.springframework.data.web.PagedModel} instances before rendering them as JSON to make sure the
 		 * representation stays stable even if {@link org.springframework.data.domain.PageImpl} is changed.
 		 */
-		VIA_DTO;
+		VIA_DTO
 	}
 
 	/**
@@ -137,7 +137,7 @@ public @interface EnableSpringDataWebSupport {
 			imports.add(resourceLoader//
 					.filter(it -> ClassUtils.isPresent("org.springframework.hateoas.Link", it))//
 					.map(it -> HateoasAwareSpringDataWebConfiguration.class.getName())//
-					.orElseGet(() -> SpringDataWebConfiguration.class.getName()));
+					.orElseGet(SpringDataWebConfiguration.class::getName));
 
 			resourceLoader//
 					.filter(it -> ClassUtils.isPresent("com.fasterxml.jackson.databind.ObjectMapper", it))//

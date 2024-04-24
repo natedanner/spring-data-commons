@@ -63,7 +63,7 @@ public abstract class PageableExecutionUtils {
 			return new PageImpl<>(content, pageable, totalSupplier.getAsLong());
 		}
 
-		if (content.size() != 0 && pageable.getPageSize() > content.size()) {
+		if (!content.isEmpty() && pageable.getPageSize() > content.size()) {
 			return new PageImpl<>(content, pageable, pageable.getOffset() + content.size());
 		}
 

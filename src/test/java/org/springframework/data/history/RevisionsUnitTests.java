@@ -35,8 +35,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class RevisionsUnitTests {
 
-	@Mock RevisionMetadata<Integer> first, second;
-	Revision<Integer, Object> firstRevision, secondRevision;
+	@Mock
+	RevisionMetadata<Integer> first;
+	@Mock
+	RevisionMetadata<Integer> second;
+	Revision<Integer, Object> firstRevision;
+	Revision<Integer, Object> secondRevision;
 
 	@BeforeEach
 	void setUp() {

@@ -26,7 +26,7 @@ import org.springframework.util.ObjectUtils;
  * @author Christoph Strobl
  * @since 2.4
  */
-class Auditor<T> {
+final class Auditor<T> {
 
 	private static final Auditor NONE = new Auditor(null) {
 
@@ -105,10 +105,12 @@ class Auditor<T> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		Auditor<?> auditor = (Auditor<?>) o;
 

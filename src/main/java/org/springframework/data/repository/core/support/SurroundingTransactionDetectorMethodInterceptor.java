@@ -36,7 +36,7 @@ public enum SurroundingTransactionDetectorMethodInterceptor implements MethodInt
 
 	INSTANCE;
 
-	private final ThreadLocal<Boolean> SURROUNDING_TX_ACTIVE = new ThreadLocal<>();
+	private final ThreadLocal<Boolean> surroundingTxActive = new ThreadLocal<>();
 
 	/**
 	 * Returns whether a transaction was active before the method call entered the repository proxy.
@@ -44,19 +44,19 @@ public enum SurroundingTransactionDetectorMethodInterceptor implements MethodInt
 	 * @return
 	 */
 	public boolean isSurroundingTransactionActive() {
-		return Boolean.TRUE == SURROUNDING_TX_ACTIVE.get();
+		return Boolean.TRUE == surroundingTxActive.get();
 	}
 
 	@Nullable
 	@Override
 	public Object invoke(@SuppressWarnings("null") MethodInvocation invocation) throws Throwable {
 
-		SURROUNDING_TX_ACTIVE.set(TransactionSynchronizationManager.isActualTransactionActive());
+		surroundingTxActive.set(TransactionSynchronizationManager.isActualTransactionActive());
 
 		try {
 			return invocation.proceed();
 		} finally {
-			SURROUNDING_TX_ACTIVE.remove();
+			surroundingTxActive.remove();
 		}
 	}
 }

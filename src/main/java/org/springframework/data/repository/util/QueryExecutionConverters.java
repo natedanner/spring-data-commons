@@ -80,7 +80,7 @@ public abstract class QueryExecutionConverters {
 			QueryExecutionConverters.class.getClassLoader());
 
 	private static final Set<WrapperType> WRAPPER_TYPES = new HashSet<>();
-	private static final Set<WrapperType> UNWRAPPER_TYPES = new HashSet<WrapperType>();
+	private static final Set<WrapperType> UNWRAPPER_TYPES = new HashSet<>();
 	private static final Set<Function<Object, Object>> UNWRAPPERS = new HashSet<>();
 	private static final Set<Class<?>> ALLOWED_PAGEABLE_TYPES = new HashSet<>();
 	private static final Map<Class<?>, ExecutionAdapter> EXECUTION_ADAPTER = new HashMap<>();
@@ -301,7 +301,7 @@ public abstract class QueryExecutionConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	private static abstract class AbstractWrapperTypeConverter implements GenericConverter {
+	private abstract static class AbstractWrapperTypeConverter implements GenericConverter {
 
 		private final Object nullValue;
 		private final Iterable<Class<?>> wrapperTypes;
@@ -430,9 +430,7 @@ public abstract class QueryExecutionConverters {
 				return true;
 			}
 
-			return targetTypeCache.computeIfAbsent(targetType, it -> {
-				return conversionService.canConvert(STREAMABLE, targetType);
-			});
+			return targetTypeCache.computeIfAbsent(targetType, it -> conversionService.canConvert(STREAMABLE, targetType));
 		}
 
 		@SuppressWarnings("unchecked")
@@ -497,7 +495,7 @@ public abstract class QueryExecutionConverters {
 		}
 
 		enum Cardinality {
-			NONE, SINGLE, MULTI;
+			NONE, SINGLE, MULTI
 		}
 
 		private final Class<?> type;

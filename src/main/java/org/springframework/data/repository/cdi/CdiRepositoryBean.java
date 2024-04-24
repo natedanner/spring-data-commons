@@ -450,6 +450,6 @@ public abstract class CdiRepositoryBean<T> implements Bean<T>, PassivationCapabl
 	}
 
 	enum DefaultCdiRepositoryConfiguration implements CdiRepositoryConfiguration {
-		INSTANCE;
+		INSTANCE
 	}
 }

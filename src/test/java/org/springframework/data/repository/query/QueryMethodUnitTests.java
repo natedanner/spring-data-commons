@@ -482,7 +482,7 @@ class QueryMethodUnitTests {
 
 	// GH-2869
 
-	static abstract class StreamableAggregate implements Streamable<Object> {}
+	abstract static class StreamableAggregate implements Streamable<Object> {}
 
 	interface StreamableAggregateRepository extends Repository<StreamableAggregate, Object> {
 
@@ -495,5 +495,5 @@ class QueryMethodUnitTests {
 		Streamable<StreamableAggregate> findAllBy();
 	}
 
-	static abstract class StreamableAggregateSubType extends StreamableAggregate {}
+	abstract static class StreamableAggregateSubType extends StreamableAggregate {}
 }
