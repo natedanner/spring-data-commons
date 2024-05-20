@@ -482,7 +482,7 @@ public class TypeDiscovererUnitTests {
 		T data;
 	}
 
-	static abstract class SomeType<Self extends SomeType<Self>> {
+	abstract static class SomeType<Self extends SomeType<Self>> {
 
 	}
 

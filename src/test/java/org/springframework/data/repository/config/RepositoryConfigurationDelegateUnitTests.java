@@ -384,7 +384,7 @@ class RepositoryConfigurationDelegateUnitTests {
 		}
 	}
 
-	static abstract class ModuleRepositoryFactoryBean<T extends Repository<S, ID>, S, ID>
+	abstract static class ModuleRepositoryFactoryBean<T extends Repository<S, ID>, S, ID>
 			extends RepositoryFactoryBeanSupport<T, S, ID> {
 
 		protected ModuleRepositoryFactoryBean(Class<? extends T> repositoryInterface) {
@@ -392,7 +392,7 @@ class RepositoryConfigurationDelegateUnitTests {
 		}
 	}
 
-	static abstract class IdAndEntityConstrainingFactoryBean<R extends Repository<T, String>, T extends Person>
+	abstract static class IdAndEntityConstrainingFactoryBean<R extends Repository<T, String>, T extends Person>
 			extends RepositoryFactoryBeanSupport<R, T, String> {
 		protected IdAndEntityConstrainingFactoryBean(Class<R> repositoryInterface) {
 			super(repositoryInterface);
